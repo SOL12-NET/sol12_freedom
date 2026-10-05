@@ -224,20 +224,13 @@ body {
   color: #ffffff;
 }
 
-.brand-symbol {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  border: 1px solid var(--accent-mars);
-  border-radius: 2px;
-  color: var(--accent-mars);
-  font-weight: 700;
-  font-family: var(--font-telemetry);
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
+#logo-simulator {
+  width: 50px;
+  height: 50px;
+  display: block;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 4px;
 }
 
 .brand-text {
