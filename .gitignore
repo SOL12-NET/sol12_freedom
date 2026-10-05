@@ -1,0 +1,10 @@
+# Dependencies & OS
+.DS_Store
+Thumbs.db
+*.log
+__pycache__/
+*.pyc
+
+# Local environments
+.venv/
+node_modules/

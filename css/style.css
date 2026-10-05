@@ -1,0 +1,1270 @@
+@import "./fonts.css";
+
+/* ==========================================================================
+   SOL12 TELEMETRY DESIGN SYSTEM (SPACEX NOIR & SWISS PRIVACY INFRASTRUCTURE)
+   ========================================================================== */
+
+:root {
+  --space-bg: #000000;
+  --space-card: #080808;
+  --space-card-elevated: #0f0f0f;
+  --space-panel: #141414;
+  --space-border: #1e1e1e;
+  --space-border-bright: #2d2d2d;
+  --space-border-glow: #383838;
+  
+  --space-text: #ffffff;
+  --space-muted: #a1a1aa;
+  --space-dim: #71717a;
+  --space-faint: #3f3f46;
+
+  --accent-cyan: #7dd3fc;
+  --accent-cyan-dim: rgba(125, 211, 252, 0.12);
+  --accent-mars: #f97316;
+  --accent-mars-bright: #ff6b35;
+  --accent-mars-dim: rgba(249, 115, 22, 0.12);
+  --accent-tor: #a855f7;
+  --accent-tor-dim: rgba(168, 85, 247, 0.12);
+
+  --status-ok: #22c55e;
+  --status-ok-dim: rgba(34, 197, 94, 0.15);
+  --status-warn: #f59e0b;
+  --status-down: #ef4444;
+
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-telemetry: 'Barlow Semi Condensed', -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--space-bg);
+  color: var(--space-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--space-bg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-mars);
+  color: #ffffff;
+}
+
+/* Minimal Aerospace Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Strict keyboard focus */
+*:focus-visible {
+  outline: 1px solid #ffffff !important;
+  outline-offset: 2px;
+}
+
+/* Background grid and glows */
+.dot-grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.ambient-glow {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+}
+
+.glow-mars {
+  width: 550px;
+  height: 550px;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.16) 0%, rgba(234, 88, 12, 0) 70%);
+}
+
+.glow-tech {
+  width: 600px;
+  height: 600px;
+  top: 35%;
+  left: -200px;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.08) 0%, rgba(125, 211, 252, 0) 70%);
+}
+
+/* Container */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography Helpers */
+.font-telemetry { font-family: var(--font-telemetry); }
+.font-mono { font-family: var(--font-mono); }
+.font-sans { font-family: var(--font-sans); }
+
+.tracking-telemetry {
+  letter-spacing: 0.18em;
+}
+.tracking-telemetry-wide {
+  letter-spacing: 0.25em;
+}
+.tracking-telemetry-tight {
+  letter-spacing: 0.12em;
+}
+
+/* Aerospace Telemetry Surfaces */
+.telemetry-card {
+  background-color: var(--space-card);
+  border: 1px solid var(--space-border);
+  border-radius: 3px;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.telemetry-card:hover {
+  border-color: var(--space-border-bright);
+}
+
+.telemetry-subcard {
+  background-color: var(--space-panel);
+  border: 1px solid var(--space-border);
+  border-radius: 2px;
+}
+
+.telemetry-header {
+  font-family: var(--font-telemetry);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--space-muted);
+}
+
+.telemetry-number {
+  font-family: var(--font-telemetry);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Live beacon animations */
+.beacon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--status-ok);
+  display: inline-block;
+  position: relative;
+}
+.beacon-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--status-ok);
+  animation: pulse-beacon 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulse-beacon {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.beacon-red {
+  background-color: var(--status-down);
+}
+.beacon-red::after {
+  border-color: var(--status-down);
+}
+
+/* Badges & Pills */
+.telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--space-border);
+  border-radius: 2px;
+  font-family: var(--font-telemetry);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--space-muted);
+}
+
+.telemetry-pill-ok {
+  border-color: rgba(34, 197, 94, 0.35);
+  background-color: var(--status-ok-dim);
+  color: #4ade80;
+}
+
+.telemetry-pill-mars {
+  border-color: rgba(249, 115, 22, 0.4);
+  background-color: var(--accent-mars-dim);
+  color: var(--accent-mars);
+}
+
+.telemetry-pill-cyan {
+  border-color: rgba(125, 211, 252, 0.35);
+  background-color: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+.telemetry-pill-tor {
+  border-color: rgba(168, 85, 247, 0.4);
+  background-color: var(--accent-tor-dim);
+  color: #c084fc;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--space-border);
+  padding: 0.75rem 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.brand-symbol {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border: 1px solid var(--accent-mars);
+  border-radius: 2px;
+  color: var(--accent-mars);
+  font-weight: 700;
+  font-family: var(--font-telemetry);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-telemetry);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-family: var(--font-telemetry);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--space-dim);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-telemetry);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--space-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link .nav-num {
+  color: var(--accent-mars);
+  font-size: 0.7rem;
+}
+
+.nav-telemetry-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time-readout {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--space-muted);
+  background: var(--space-panel);
+  border: 1px solid var(--space-border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* Mobile Toggle */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--space-border);
+  padding: 0.5rem;
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--space-muted);
+}
+
+.mobile-nav-toggle:hover {
+  color: #fff;
+  border-color: var(--space-border-bright);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-telemetry);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+.btn-mars {
+  background-color: var(--accent-mars);
+  color: #ffffff;
+  border-color: var(--accent-mars-bright);
+}
+.btn-mars:hover {
+  background-color: #ea580c;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
+}
+
+.btn-cyan {
+  background-color: transparent;
+  color: var(--accent-cyan);
+  border-color: rgba(125, 211, 252, 0.4);
+}
+.btn-cyan:hover {
+  background-color: rgba(125, 211, 252, 0.1);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(125, 211, 252, 0.25);
+}
+
+.btn-outline {
+  background-color: var(--space-panel);
+  color: var(--space-text);
+  border-color: var(--space-border);
+}
+.btn-outline:hover {
+  background-color: var(--space-card-elevated);
+  border-color: var(--space-border-bright);
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.72rem;
+}
+
+/* ==========================================================================
+   HERO SECTION (2 COLUMNS: LEFT TEXT / RIGHT 3D MARS)
+   ========================================================================== */
+
+.hero-section {
+  padding: 3.5rem 0 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* Hero Left Column (Narrative & Swiss Middle Relay Mission) */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.hero-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-title {
+  font-family: var(--font-telemetry);
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.hero-title-highlight {
+  color: var(--accent-mars);
+  text-shadow: 0 0 24px rgba(249, 115, 22, 0.35);
+}
+
+.hero-subtitle {
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: #d4d4d8;
+  font-weight: 400;
+}
+
+.hero-statement-card {
+  background-color: var(--space-card);
+  border-left: 3px solid var(--accent-mars);
+  border-top: 1px solid var(--space-border);
+  border-right: 1px solid var(--space-border);
+  border-bottom: 1px solid var(--space-border);
+  padding: 1.1rem 1.3rem;
+  border-radius: 2px;
+}
+
+.hero-statement-card p {
+  font-size: 0.95rem;
+  color: var(--space-muted);
+  line-height: 1.65;
+}
+
+.hero-statement-card strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Hero Key Specs Chips */
+.hero-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.hero-spec-item {
+  background: var(--space-card);
+  border: 1px solid var(--space-border);
+  padding: 0.75rem 0.65rem;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.spec-val {
+  font-family: var(--font-telemetry);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.spec-lbl {
+  font-family: var(--font-telemetry);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--space-dim);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Hero Right Column (3D Mars Canvas & Orbital HUD) */
+.hero-mars-column {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+}
+
+.mars-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 4px;
+}
+
+#mars-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-mars-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-mars-fallback img {
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(234, 88, 12, 0.2));
+}
+
+/* Aerospace HUD overlays over Mars */
+.mars-hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  z-index: 10;
+}
+
+.hud-top-row, .hud-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.hud-badge {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--space-border);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.65rem;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--space-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hud-badge-title {
+  font-family: var(--font-telemetry);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-mars);
+}
+
+.hud-badge-val {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SECTION HEADERS
+   ========================================================================== */
+
+.section-padding {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  font-family: var(--font-telemetry);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-mars);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-telemetry);
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--space-muted);
+  max-width: 780px;
+  margin-top: 0.75rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   EU THREAT MATRIX (SURVEILLANCE & CHAT CONTROL)
+   ========================================================================== */
+
+.threat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.threat-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border-top: 2px solid var(--space-border);
+}
+
+.threat-card:hover {
+  border-top-color: var(--status-down);
+}
+
+.threat-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.threat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--status-down);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+.threat-num {
+  font-family: var(--font-telemetry);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--space-dim);
+}
+
+.threat-card h3 {
+  font-family: var(--font-telemetry);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.threat-card p {
+  font-size: 0.88rem;
+  color: var(--space-muted);
+  line-height: 1.6;
+}
+
+.threat-footer {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--space-dim);
+  border-top: 1px solid var(--space-border);
+  padding-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Swiss Sanctuary Callout */
+.sanctuary-banner {
+  margin-top: 2.5rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.08) 0%, rgba(10, 10, 10, 0.9) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sanctuary-banner h4 {
+  font-family: var(--font-telemetry);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.sanctuary-banner p {
+  color: var(--space-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   CIRCUIT SIMULATOR & MIDDLE RELAY PEDAGOGY
+   ========================================================================== */
+
+.circuit-section {
+  background-color: #040404;
+  border-top: 1px solid var(--space-border);
+  border-bottom: 1px solid var(--space-border);
+}
+
+.circuit-hops-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.circuit-hop-card {
+  padding: 1.4rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.circuit-hop-card::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--space-dim);
+  font-size: 1.1rem;
+  z-index: 5;
+}
+
+.circuit-hop-card:last-child::after {
+  display: none;
+}
+
+.circuit-hop-card:hover {
+  border-color: var(--space-border-bright);
+  background-color: var(--space-card-elevated);
+}
+
+.circuit-hop-card.active-hop {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(125, 211, 252, 0.2);
+  background-color: #0d1217;
+}
+
+.circuit-hop-card.sol12-highlight {
+  border-color: var(--accent-mars);
+}
+.circuit-hop-card.sol12-highlight.active-hop {
+  border-color: var(--accent-mars-bright);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  background-color: #160c07;
+}
+
+.hop-step {
+  font-family: var(--font-telemetry);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--space-dim);
+  margin-bottom: 0.4rem;
+}
+
+.hop-name {
+  font-family: var(--font-telemetry);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.hop-loc {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-mars);
+}
+
+.circuit-inspector-box {
+  padding: 1.75rem 2rem;
+  background-color: var(--space-card);
+  border: 1px solid var(--space-border-bright);
+  border-radius: 3px;
+}
+
+.inspector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.inspector-pane {
+  background: var(--space-panel);
+  border: 1px solid var(--space-border);
+  padding: 1.25rem;
+  border-radius: 2px;
+}
+
+.inspector-pane-title {
+  font-family: var(--font-telemetry);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--space-muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inspector-pane p {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   LIVE RELAY TELEMETRY (SPACEX / TOR-MONITOR DASHBOARD)
+   ========================================================================== */
+
+.relays-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.relay-card {
+  padding: 1.75rem;
+}
+
+.relay-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px solid var(--space-border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.relay-id-box h3 {
+  font-family: var(--font-telemetry);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.relay-fingerprint-box {
+  background: var(--space-panel);
+  border: 1px solid var(--space-border);
+  padding: 0.6rem 0.75rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.fp-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #e4e4e7;
+  letter-spacing: 0.05em;
+  word-break: break-all;
+}
+
+.btn-copy-fp {
+  background: transparent;
+  border: 1px solid var(--space-border);
+  color: var(--space-muted);
+  font-family: var(--font-telemetry);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.btn-copy-fp:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.relay-flags-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.flag-chip {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--space-muted);
+  background: var(--space-card-elevated);
+  border: 1px solid var(--space-border);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+}
+
+/* Bandwidth Sparkline */
+.bw-sparkline-box {
+  background: #020202;
+  border: 1px solid var(--space-border);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.bw-sparkline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.bw-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.legend-rx { color: var(--accent-cyan); }
+.legend-tx { color: var(--accent-mars); }
+
+.sparkline-canvas {
+  width: 100%;
+  height: 70px;
+  display: block;
+}
+
+.relay-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+
+.relay-specs-table tr {
+  border-bottom: 1px solid #161616;
+}
+
+.relay-specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.relay-specs-table td {
+  padding: 0.45rem 0;
+  color: var(--space-muted);
+}
+
+.relay-specs-table td:last-child {
+  text-align: right;
+  color: #ffffff;
+}
+
+/* Metrics controls bar */
+.metrics-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: var(--space-card);
+  border: 1px solid var(--space-border);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   MANIFESTO & GUARANTEES
+   ========================================================================== */
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.manifesto-card {
+  padding: 1.6rem 1.4rem;
+  border-bottom: 2px solid var(--space-border);
+}
+
+.manifesto-card:hover {
+  border-bottom-color: var(--accent-mars);
+}
+
+.manifesto-num {
+  font-family: var(--font-telemetry);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-mars);
+  margin-bottom: 0.6rem;
+}
+
+.manifesto-card h4 {
+  font-family: var(--font-telemetry);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.manifesto-card p {
+  font-size: 0.86rem;
+  color: var(--space-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER (MISSION CONTROL TERMINAL)
+   ========================================================================== */
+
+.footer {
+  background-color: #030303;
+  border-top: 1px solid var(--space-border);
+  padding: 4rem 0 2rem 0;
+  font-size: 0.85rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-brand-col p {
+  color: var(--space-muted);
+  line-height: 1.6;
+  font-size: 0.86rem;
+}
+
+.footer-col h5 {
+  font-family: var(--font-telemetry);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: var(--space-muted);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-mars);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--space-border);
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--space-dim);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-mars-column {
+    min-height: 420px;
+  }
+  .mars-canvas-wrapper {
+    height: 420px;
+  }
+
+  .threat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .circuit-hops-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .circuit-hop-card::after {
+    display: none;
+  }
+
+  .relays-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #080808;
+    border-bottom: 1px solid var(--space-border);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-specs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .inspector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .time-readout-container {
+    display: none;
+  }
+}

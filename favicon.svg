@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#030305"/>
+  <ellipse cx="32" cy="32" rx="25" ry="10" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.4" transform="rotate(-25 32 32)"/>
+  <circle cx="32" cy="32" r="15" fill="#d64513" opacity="0.25"/>
+  <circle cx="32" cy="32" r="12" fill="url(#marsGrad)"/>
+  <circle cx="15" cy="24" r="2" fill="#00f0ff" opacity="0.95"/>
+  <defs>
+    <radialGradient id="marsGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff7b4d"/>
+      <stop offset="70%" stop-color="#d64513"/>
+      <stop offset="100%" stop-color="#8b2500"/>
+    </radialGradient>
+  </defs>
+</svg>
