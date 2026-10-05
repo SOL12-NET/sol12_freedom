@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Tor Relays · SOL12</title>
+  <meta name="description" content="Explore the SOL12 Tor relays: current operational status, live incoming and outgoing traffic, uptime, and consensus flags.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="dot-grid-overlay" aria-hidden="true"></div>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="SOL12 home">
+        <canvas id="logo-simulator" width="54" height="54" aria-hidden="true"></canvas>
+        <div class="brand-text"><span class="brand-name">SOL12</span><span class="brand-sub">// SOVEREIGNTY &amp; ENCRYPTION</span></div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="relays.html" class="btn nav-relays-link" aria-current="page">Our Tor Relays <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="nav-telemetry-status">
+        <span class="time-readout" id="telemetry-clock-utc">--:--:-- UTC</span>
+        <div class="telemetry-pill" id="fleet-status" data-state="unknown"><span class="beacon-dot"></span><span id="fleet-status-text">CHECKING RELAYS</span></div>
+      </div>
+    </div>
+  </header>
+  <main class="container relays-main">
+    <div class="relays-heading">
+      <div>
+        <span class="section-tag font-mono">// SWISS PRIVACY INFRASTRUCTURE</span>
+        <h1 class="section-title">Our Tor Relays</h1>
+        <p class="section-subtitle">Independent infrastructure. Real traffic. A stronger Tor network.</p>
+      </div>
+      <a href="index.html" class="relay-home-link">← Our mission</a>
+    </div>
+    <div class="fleet-overview" aria-label="Relay network overview">
+      <div><span class="telemetry-header">Relays</span><strong id="relay-count">—</strong></div>
+      <div><span class="telemetry-header">Operational</span><strong id="relay-ok-count">—</strong></div>
+      <div><span class="telemetry-header">Needs attention</span><strong id="relay-attention-count">—</strong></div>
+      <p>Bandwidth updates as traffic is measured.<br>Operational status refreshes every 20 seconds.</p>
+    </div>
+    <p id="relays-notice" class="relays-notice" role="status">Connecting to relay telemetry…</p>
+    <div id="relay-list" class="relay-list"></div>
+    <noscript><p class="relays-notice">Enable JavaScript to view current status and live bandwidth. <a href="https://tor.sol12.net/" target="_blank" rel="noopener noreferrer">View SOL12net statistics ↗</a></p></noscript>
+    <div class="relays-footnote">
+      <span class="section-tag font-mono">// BUILT TO GROW</span>
+      <p>Each new SOL12 relay will appear here with its own status and traffic. For detailed charts and diagnostics, open the relay’s full statistics.</p>
+    </div>
+  </main>
+  <template id="relay-card-template">
+    <article class="telemetry-card relay-card">
+      <div class="relay-card-header">
+        <div><span class="telemetry-header">SOL12 NETWORK</span><h2 data-field="nickname"></h2><p data-field="location" class="relay-location"></p></div>
+        <span class="telemetry-pill relay-state" data-field="status" data-state="unknown">Checking</span>
+      </div>
+      <p data-field="reason" class="relay-reason" role="status"></p>
+      <div class="relay-bandwidth">
+        <div class="bandwidth-metric"><span class="telemetry-header">↓ Incoming traffic</span><strong data-field="read">—</strong><span class="relay-unit">Mbit/s</span><svg data-field="read-chart" viewBox="0 0 360 54" preserveAspectRatio="none" aria-hidden="true"><polyline points="" /></svg></div>
+        <div class="bandwidth-metric"><span class="telemetry-header">↑ Outgoing traffic</span><strong data-field="write">—</strong><span class="relay-unit">Mbit/s</span><svg data-field="write-chart" viewBox="0 0 360 54" preserveAspectRatio="none" aria-hidden="true"><polyline points="" /></svg></div>
+      </div>
+      <div class="relay-feed"><span data-field="feed" data-state="unknown">Waiting for traffic measurements</span><span data-field="sample-time"></span></div>
+      <dl class="relay-facts">
+        <div><dt>Uptime</dt><dd data-field="uptime">—</dd></div>
+        <div><dt>Tor version</dt><dd data-field="version">—</dd></div>
+        <div><dt>Relay role</dt><dd data-field="role">—</dd></div>
+      </dl>
+      <div class="relay-flags"><span class="telemetry-header">Consensus flags</span><div data-field="flags"></div></div>
+      <div class="relay-fingerprint"><span class="telemetry-header">Fingerprint</span><code data-field="fingerprint"></code></div>
+      <div class="relay-card-footer"><span data-field="checked" class="relay-checked"></span><a data-field="stats-link" class="btn nav-relays-link" target="_blank" rel="noopener noreferrer">Full statistics <span aria-hidden="true">↗</span></a></div>
+    </article>
+  </template>
+  <footer class="footer"><div class="container footer-content"><div class="footer-left"><span class="footer-brand">SOL12 // SWISS TOR RELAYS</span><p class="footer-desc">An independent, volunteer-led initiative defending strong encryption, online privacy, and freedom of expression.</p></div><div class="footer-links"><a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Project ↗</a><a href="index.html">Our mission</a></div></div></footer>
+  <script src="js/app.js"></script>
+  <script src="js/relays.js"></script>
+</body>
+</html>

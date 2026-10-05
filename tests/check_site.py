@@ -6,9 +6,10 @@ def main():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(f"Checking project at: {root}")
     
-    html_path = os.path.join(root, "index.html")
-    with open(html_path, "r", encoding="utf-8") as f:
-        html = f.read()
+    html = ""
+    for page in ("index.html", "relays.html"):
+        with open(os.path.join(root, page), "r", encoding="utf-8") as f:
+            html += f.read()
 
     css_path = os.path.join(root, "css", "style.css")
     with open(css_path, "r", encoding="utf-8") as f:

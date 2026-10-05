@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOL12 // Defending Privacy &amp; Freedom of Expression · Swiss Tor Relays</title>
   
-  <meta name="description" content="Following repeated and alarming offensives by the European Union against the confidentiality of private communications and strong encryption, SOL12 actively fights to safeguard free speech and anonymity on the web by operating high-quality Tor middle relays in Switzerland.">
+  <meta name="description" content="SOL12 defends freedom of expression, strong encryption, and online privacy by funding and operating reliable Tor relays in Switzerland.">
   <meta name="keywords" content="SOL12, Tor, Middle Relay, Switzerland, Freedom of Expression, Privacy, Encryption, Anonymity">
   <meta name="author" content="SOL12 Network">
 
@@ -38,12 +38,16 @@
         </div>
       </a>
 
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="relays.html" class="btn nav-relays-link">Our Tor Relays <span aria-hidden="true">↗</span></a>
+      </nav>
+
       <!-- Real-Time Status & Clock -->
       <div class="nav-telemetry-status">
         <span class="time-readout" id="telemetry-clock-utc">--:--:-- UTC</span>
-        <div class="telemetry-pill telemetry-pill-ok">
+        <div class="telemetry-pill" id="fleet-status" data-state="unknown">
           <span class="beacon-dot"></span>
-          <span>RELAYS ONLINE</span>
+          <span id="fleet-status-text">CHECKING RELAYS</span>
         </div>
       </div>
     </div>
@@ -67,11 +71,11 @@
 
           <div class="hero-text-block">
             <p class="hero-paragraph">
-              Following repeated and alarming offensives by the European Union against the confidentiality of private communications and strong encryption, SOL12 actively fights to safeguard free speech and anonymity on the web.
+              In response to repeated threats to private communications and strong encryption from EU initiatives, SOL12 works to defend freedom of expression and online anonymity.
             </p>
 
             <p class="hero-paragraph">
-              We fund, harden, and operate high-quality Tor middle relays on Swiss territory. Hosted outside the legal jurisdiction of the EU, our nodes guarantee neutral routing and excellent stability.
+              We fund, secure, and operate reliable Tor relays in Switzerland. Based outside the European Union, our infrastructure supports neutral routing and helps strengthen the Tor network.
             </p>
           </div>
 
@@ -105,7 +109,7 @@
           <span class="section-tag font-mono">// CORE PRINCIPLES</span>
           <h2 class="section-title">The SOL12 Manifesto</h2>
           <p class="section-subtitle">
-            Four commitments governing our infrastructure and civic action.
+            Four principles guide our work and the infrastructure we operate.
           </p>
         </div>
 
@@ -115,13 +119,13 @@
             <div class="manifesto-num">01</div>
             <h3>Unconditional Encryption</h3>
             <p>
-              Unbreakable encryption is a fundamental human right. We categorically reject any backdoors, algorithmic weakening, or preemptive scanning of personal devices.
+              Strong encryption protects fundamental rights. We reject backdoors, deliberate weakening of encryption, and indiscriminate scanning of personal devices.
             </p>
           </div>
 
           <div class="telemetry-card manifesto-card">
             <div class="manifesto-num">02</div>
-            <h3>Zero Disk Persistence</h3>
+            <h3>No Persistent Logs</h3>
             <p>
               What is never recorded can never be compromised, seized, or leaked. Our nodes run entirely in volatile memory (RAM) and generate no persistent log files.
             </p>
@@ -131,7 +135,7 @@
             <div class="manifesto-num">03</div>
             <h3>Sovereign Neutrality</h3>
             <p>
-              Located in Switzerland, our servers benefit from a stable and protective legal framework outside the European Union, insulated from extraterritorial pressures and mass surveillance directives.
+              Our servers are based in Switzerland, under a stable legal framework that protects privacy. We support independent infrastructure and oppose mass surveillance.
             </p>
           </div>
 
@@ -139,7 +143,7 @@
             <div class="manifesto-num">04</div>
             <h3>Dedicated to the Common Good</h3>
             <p>
-              We operate these relays on an independent, self-funded volunteer basis to strengthen the resilience of the global Tor network for journalists, activists, and citizens worldwide.
+              We run these relays independently, funding them ourselves and volunteering our time to strengthen the global Tor network for journalists, activists, and people worldwide.
             </p>
           </div>
 
@@ -157,14 +161,14 @@
       <div class="footer-left">
         <span class="footer-brand">SOL12 // SWISS TOR RELAYS</span>
         <p class="footer-desc">
-          Independent civic initiative dedicated to the defense of strong encryption, online privacy, and freedom of expression.
+          An independent, volunteer-led initiative defending strong encryption, online privacy, and freedom of expression.
         </p>
       </div>
 
       <div class="footer-right">
         <div class="footer-meta">
           <span>JURISDICTION: SWITZERLAND · ART. 13 CONST.</span>
-          <span>POLICY: STRICT ZERO-LOG</span>
+          <span>POLICY: NO LOGGING</span>
         </div>
         <div class="footer-links">
           <a href="https://metrics.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Metrics ↗</a>
@@ -179,6 +183,7 @@
   <script src="js/GLTFLoader.js"></script>
   <script src="js/mars-globe.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/relays.js"></script>
 
 </body>
 </html>

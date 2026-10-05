@@ -1,0 +1,40 @@
+services:
+  sol12-freedom:
+    build: .
+    image: sol12-freedom:local
+    container_name: sol12-freedom
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:${PORT:-8091}:8000"
+    volumes:
+      # Mount ONLY the authentication cookie, never the Tor identity/key volume.
+      - type: bind
+        source: ${TOR_COOKIE_HOST_PATH:-/var/lib/docker/volumes/tor-docker_tor-data/_data/control_auth_cookie}
+        target: /run/tor/sol12net/control_auth_cookie
+        read_only: true
+        bind:
+          create_host_path: false
+    user: "10001:10001"
+    group_add:
+      - "${TOR_COOKIE_GID:-101}"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16M,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    pids_limit: 64
+    networks: [tor_net, npm_net]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+networks:
+  tor_net:
+    external: true
+    name: ${TOR_NETWORK_NAME:-tor-docker_default}
+  npm_net:
+    external: true
+    name: ${NPM_NETWORK_NAME:-nginx-proxy-manager_default}
