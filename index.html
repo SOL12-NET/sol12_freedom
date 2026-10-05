@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOL12 // Défense de la Vie Privée & Liberté d'Expression · Relais Tor Suisses</title>
   
-  <meta name="description" content="Face aux attaques répétées de l'Union Européenne contre la liberté d'expression et le chiffrement, SOL12 opère en Suisse des middle relais Tor haute performance, durcis et sans compromis.">
-  <meta name="keywords" content="SOL12, Tor, Middle Relay, Suisse, Liberté d'expression, Privacy, Chiffrement, Chat Control, Vie privée, Anonymat, SpaceX Telemetry">
+  <meta name="description" content="Suite aux offensives répétées de l'Union Européenne contre la confidentialité et le chiffrement fort, SOL12 lutte pour la liberté de parole et l'anonymat sur le web en opérant des middle relais Tor en Suisse.">
+  <meta name="keywords" content="SOL12, Tor, Middle Relay, Suisse, Liberté d'expression, Privacy, Chiffrement, Anonymat">
   <meta name="author" content="SOL12 Network">
 
-  <!-- OpenGraph / Social -->
+  <!-- OpenGraph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="SOL12 // Défense de la Vie Privée & Liberté d'Expression">
   <meta property="og:description" content="Relais Tor suisses haute performance pour la liberté d'expression et la confidentialité face aux dérives de surveillance de l'UE.">
@@ -24,13 +24,11 @@
 </head>
 <body>
 
-  <!-- Tactical Dot Grid & Ambient Space Glows -->
+  <!-- Background overlay (pure pitch black space) -->
   <div class="dot-grid-overlay" aria-hidden="true"></div>
-  <div class="ambient-glow glow-mars" aria-hidden="true"></div>
-  <div class="ambient-glow glow-tech" aria-hidden="true"></div>
 
-  <!-- Mission Control Navbar -->
-  <nav class="navbar" id="navbar">
+  <!-- Minimal Mission Control Navbar -->
+  <header class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="#" class="nav-brand" aria-label="Accueil SOL12">
         <div class="brand-symbol">12</div>
@@ -40,627 +38,153 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#offensive-ue" class="nav-link"><span class="nav-num">01.</span> Offensive UE</a></li>
-        <li><a href="#sanctuaire-suisse" class="nav-link"><span class="nav-num">02.</span> Sanctuaire Suisse</a></li>
-        <li><a href="#circuit-tor" class="nav-link"><span class="nav-num">03.</span> Circuit Tor</a></li>
-        <li><a href="#telemetrie" class="nav-link"><span class="nav-num">04.</span> Télémétrie Relais</a></li>
-        <li><a href="#manifeste" class="nav-link"><span class="nav-num">05.</span> Manifeste</a></li>
-      </ul>
-
-      <!-- Mission Status & UTC Time -->
+      <!-- Real-Time Status & Clock -->
       <div class="nav-telemetry-status">
-        <div class="time-readout-container">
-          <span class="time-readout" id="telemetry-clock-utc">--:--:-- UTC</span>
-        </div>
+        <span class="time-readout" id="telemetry-clock-utc">--:--:-- UTC</span>
         <div class="telemetry-pill telemetry-pill-ok">
           <span class="beacon-dot"></span>
           <span>RELAIS EN LIGNE</span>
         </div>
-        <button class="mobile-nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
-          <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
       </div>
-    </div>
-  </nav>
-
-  <!-- =========================================================================
-       HERO SECTION: LEFT TEXT / RIGHT 3D MARS GLOBE & ORBITING SATELLITES
-       ========================================================================= -->
-  <header class="hero-section">
-    <div class="container hero-grid">
-      
-      <!-- Left Column: Assertive Narrative & Mission -->
-      <div class="hero-content">
-        
-        <!-- Metadata Pill badges -->
-        <div class="hero-badge-group">
-          <div class="telemetry-pill telemetry-pill-mars">
-            <span>SUISSE // HORS UE</span>
-          </div>
-          <div class="telemetry-pill telemetry-pill-cyan">
-            <span>MIDDLE RELAIS TOR DÉDIÉS</span>
-          </div>
-          <div class="telemetry-pill">
-            <span>CONFÉDÉRATION HELVÉTIQUE · ART. 13 Cst</span>
-          </div>
-        </div>
-
-        <!-- Main Title -->
-        <h1 class="hero-title">
-          La liberté d'expression ne se négocie pas.<br>
-          <span class="hero-title-highlight">Défendons un Internet libre et chiffré.</span>
-        </h1>
-
-        <!-- Context Statement -->
-        <p class="hero-subtitle">
-          Suite aux offensives répétées et inquiétantes de l'Union Européenne contre la confidentialité des correspondances privées et le chiffrement fort, SOL12 lutte activement pour préserver la liberté de parole et l'anonymat sur le web.
-        </p>
-
-        <!-- Technical Mission Statement Box -->
-        <div class="hero-statement-card">
-          <p>
-            Nous finançons, durcissons et opérons sur le territoire suisse des <strong>middle relais Tor de haute qualité</strong>. Hébergés en dehors de l'espace juridique de l'UE, nos nœuds garantissent un routage neutre, une bande passante Gigabit sans bridage et une étanchéité cryptographique totale face aux velléités de surveillance étatique.
-          </p>
-        </div>
-
-        <!-- Quick Telemetry Specs Matrix -->
-        <div class="hero-specs-grid">
-          <div class="hero-spec-item">
-            <span class="spec-val text-white">10 Gbps</span>
-            <span class="spec-lbl">Uplink Dédié</span>
-          </div>
-          <div class="hero-spec-item">
-            <span class="spec-val" style="color: var(--accent-cyan);">100% RAM</span>
-            <span class="spec-lbl">Zéro Log Disque</span>
-          </div>
-          <div class="hero-spec-item">
-            <span class="spec-val" style="color: var(--accent-mars);">CH (SUISSE)</span>
-            <span class="spec-lbl">Juridiction LPD</span>
-          </div>
-          <div class="hero-spec-item">
-            <span class="spec-val text-space-ok" style="color: var(--status-ok);">99.98%</span>
-            <span class="spec-lbl">Disponibilité</span>
-          </div>
-        </div>
-
-        <!-- Action CTAs -->
-        <div class="hero-actions">
-          <a href="#telemetrie" class="btn btn-mars">
-            <span>Télémétrie en Direct</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-          </a>
-          <a href="#offensive-ue" class="btn btn-cyan">
-            <span>Comprendre le Combat</span>
-          </a>
-          <a href="https://metrics.torproject.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-            <span>Tor Metrics ↗</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Right Column: Photorealistic 3D Mars with Phobos & Deimos Satellites -->
-      <div class="hero-mars-column">
-        <div class="mars-canvas-wrapper telemetry-card" style="border: 1px solid #262626;">
-          
-          <!-- Mars 3D Canvas Mount Point -->
-          <div id="mars-canvas-container">
-            <picture id="mars-fallback-image" class="hero-mars-fallback">
-              <source srcset="assets/mars_orbit_view.webp" type="image/webp">
-              <img src="assets/mars_orbit_view.png" alt="Orbite martienne avec Phobos et Deimos" width="600" height="600">
-            </picture>
-          </div>
-
-          <!-- Aerospace HUD Telemetry Overlays -->
-          <div class="mars-hud-overlay" aria-hidden="true">
-            <div class="hud-top-row">
-              <div class="hud-badge">
-                <span class="hud-badge-title">// ASTRE CIBLE</span>
-                <span class="hud-badge-val">MARS · INCLINAISON 25.2°</span>
-              </div>
-              <div class="hud-badge">
-                <span class="hud-badge-title">// SATELLITES EN ORBITE</span>
-                <span class="hud-badge-val">PHOBOS : <span id="hud-phobos-deg">015°</span> · DEIMOS : <span id="hud-deimos-deg">184°</span></span>
-              </div>
-            </div>
-
-            <div class="hud-bottom-row">
-              <div class="hud-badge">
-                <span class="hud-badge-title">// ÉCLIPSE SOLAIRE</span>
-                <span class="hud-badge-val" id="hud-eclipse-state">OMBRE PORTÉE EN DIRECT</span>
-              </div>
-              <div class="hud-badge">
-                <span class="hud-badge-title">// HORLOGE MISSION</span>
-                <span class="hud-badge-val" id="telemetry-clock-sol">SOL 742 MTC</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
   </header>
 
   <!-- =========================================================================
-       SECTION 01: L'OFFENSIVE DE L'UNION EUROPÉENNE SUR LES LIBERTÉS NUMÉRIQUES
+       HERO SECTION:
+       LEFT: EXACT REQUESTED TEXT
+       RIGHT: SEAMLESS 3D MARS GLOBE (BORDERLESS, PURE BLACK BACKGROUND)
        ========================================================================= -->
-  <section id="offensive-ue" class="section-padding scroll-reveal">
-    <div class="container">
-      
-      <div class="section-header">
-        <span class="section-tag font-mono">// 01. MATRICE DES MENACES EUROPÉENNES</span>
-        <h2 class="section-title">Pourquoi nous luttons : La dérive autoritaire de l'UE</h2>
-        <p class="section-subtitle">
-          Sous couvert de prétextes sécuritaires, les institutions de l'Union Européenne ont entrepris une offensive sans précédent pour démanteler le chiffrement fort et imposer une surveillance systématique des communications de centaines de millions de citoyens.
-        </p>
-      </div>
-
-      <!-- Threat Matrix Cards -->
-      <div class="threat-grid">
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
         
-        <!-- Threat Card 1: Chat Control -->
-        <div class="telemetry-card threat-card">
-          <div class="threat-header-row">
-            <span class="threat-tag">[MENACE // SCAN GÉNÉRALISÉ]</span>
-            <span class="threat-num">01</span>
+        <!-- Left Column: Text & Statements -->
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="telemetry-pill telemetry-pill-mars">CONFÉDÉRATION HELVÉTIQUE · ART. 13 Cst</span>
+            <span class="telemetry-pill telemetry-pill-cyan">MIDDLE RELAIS TOR</span>
           </div>
-          <div>
-            <h3>Chat Control & Scan Côté Client</h3>
+
+          <h1 class="hero-title">
+            Liberté d'expression &amp;<br>
+            <span class="hero-title-highlight">Vie privée sur Internet</span>
+          </h1>
+
+          <div class="hero-text-block">
+            <p class="hero-paragraph">
+              Suite aux offensives répétées et inquiétantes de l'Union Européenne contre la confidentialité des correspondances privées et le chiffrement fort, SOL12 lutte activement pour préserver la liberté de parole et l'anonymat sur le web.
+            </p>
+
+            <p class="hero-paragraph">
+              Nous finançons, durcissons et opérons sur le territoire suisse des middle relais Tor de haute qualité. Hébergés en dehors de l'espace juridique de l'UE, nos nœuds garantissent un routage neutre et une excellente stabilité.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#manifeste" class="btn btn-mars">
+              <span>Le Manifeste</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </a>
+            <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+              <span>Tor Project ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: 3D Mars Globe seamlessly blending into black background (no frame, no border) -->
+        <div class="hero-mars-column">
+          <div class="hero-image-container" id="mars-canvas-container">
+            <picture id="mars-fallback-image">
+              <source srcset="assets/mars_orbit_view.webp" type="image/webp">
+              <img src="assets/mars_orbit_view.png" alt="Orbite martienne avec Phobos et Deimos" class="hero-mars-image" width="1024" height="1024">
+            </picture>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         LE MANIFESTE SOL12
+         ========================================================================= -->
+    <section id="manifeste" class="section-padding scroll-reveal">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag font-mono">// PRINCIPES FONDAMENTAUX</span>
+          <h2 class="section-title">Le Manifeste SOL12</h2>
+          <p class="section-subtitle">
+            Quatre engagements non négociables qui régissent notre infrastructure et notre action citoyenne.
+          </p>
+        </div>
+
+        <div class="manifesto-grid">
+          
+          <div class="telemetry-card manifesto-card">
+            <div class="manifesto-num">01</div>
+            <h3>Chiffrement Inconditionnel</h3>
             <p>
-              Le projet européen de "Chat Control" (CSAM Directive) vise à imposer le scan algorithmique automatisé de tous les messages privés, images et échanges audio directement sur les appareils, <em>avant</em> tout chiffrement. C'est l'anéantissement pur et simple du secret de la correspondance.
+              Le chiffrement inviolable est un droit humain fondamental. Nous rejetons catégoriquement toute forme de porte dérobée, d'affaiblissement algorithmique ou de scan préventif des appareils.
             </p>
           </div>
-          <div class="threat-footer">
-            <span class="beacon-dot beacon-red"></span>
-            <span>CIBLE : CONFIDENTIALITÉ DES CONVERSATIONS</span>
-          </div>
-        </div>
 
-        <!-- Threat Card 2: Backdoors & Encryption Sabotage -->
-        <div class="telemetry-card threat-card">
-          <div class="threat-header-row">
-            <span class="threat-tag">[MENACE // DÉCHIFFREMENT FORCÉ]</span>
-            <span class="threat-num">02</span>
-          </div>
-          <div>
-            <h3>Portes Dérobées (Backdoors)</h3>
+          <div class="telemetry-card manifesto-card">
+            <div class="manifesto-num">02</div>
+            <h3>Zéro Persistance Disque</h3>
             <p>
-              Les résolutions du Conseil européen exigent des concepteurs d'applications (Signal, WhatsApp, Matrix) qu'ils ménagent des accès dérogatoires aux clés cryptographiques. Or, une "porte dérobée étatique" est mathématiquement une faille qui sera inévitablement exploitée par des criminels ou des régimes hostiles.
+              Ce qui n'est pas enregistré ne peut être ni piraté, ni saisi, ni divulgué. Nos nœuds fonctionnent intégralement en mémoire vive volatile et ne conservent aucun journal d'activité.
             </p>
           </div>
-          <div class="threat-footer">
-            <span class="beacon-dot beacon-red"></span>
-            <span>CIBLE : INTÉGRITÉ DES PROTOCOLES CHIFFRÉS</span>
-          </div>
-        </div>
 
-        <!-- Threat Card 3: Censorship & IP Tracking -->
-        <div class="telemetry-card threat-card">
-          <div class="threat-header-row">
-            <span class="threat-tag">[MENACE // CENSURE DIRECTE]</span>
-            <span class="threat-num">03</span>
-          </div>
-          <div>
-            <h3>Censure Administrative & Traçage IP</h3>
+          <div class="telemetry-card manifesto-card">
+            <div class="manifesto-num">03</div>
+            <h3>Neutralité Souveraine</h3>
             <p>
-              Blocages DNS unilatéraux sans ordonnance judiciaire (DSA), surveillance massive des métadonnées de connexion et tentative de criminaliser l'utilisation des VPN et des outils d'anonymisation. La dissidence politique et le journalisme d'investigation en sont les premières victimes collatérales.
-            </p>
-          </div>
-          <div class="threat-footer">
-            <span class="beacon-dot beacon-red"></span>
-            <span>CIBLE : PLURALISME & DROIT À L'ANONYMAT</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Swiss Sanctuary Callout Banner -->
-      <div id="sanctuaire-suisse" class="telemetry-card sanctuary-banner">
-        <h4>// LE SANCTUAIRE SUISSE : UN CHOIX STRATÉGIQUE INÉBRANLABLE</h4>
-        <p>
-          La Confédération Suisse n'est pas membre de l'Union Européenne et n'est pas soumise aux règlements de Bruxelles. L'<strong>Article 13 de la Constitution fédérale suisse</strong> garantit solennellement que « toute personne a droit au respect de sa vie privée et familiale, de son domicile, de sa correspondance et de ses relations par la poste et les télécommunications ». C'est sous ce rempart constitutionnel et sous la Loi fédérale sur la protection des données (LPD) que SOL12 déploie ses serveurs.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 02: ANATOMIE D'UN CIRCUIT TOR & LE RÔLE VITALE DES MIDDLE RELAIS
-       ========================================================================= -->
-  <section id="circuit-tor" class="section-padding circuit-section scroll-reveal">
-    <div class="container">
-      
-      <div class="section-header">
-        <span class="section-tag font-mono">// 02. INFRASTRUCTURE & ROUTAGE EN OIGNON</span>
-        <h2 class="section-title">Pourquoi les Middle Relais sont le pivot de Tor</h2>
-        <p class="section-subtitle">
-          Le réseau Tor repose sur une chaîne cryptographique inviolable à 3 nœuds. Cliquez sur chaque nœud pour observer ce qu'il connaît et ce qu'il ignore radicalement.
-        </p>
-      </div>
-
-      <!-- Interactive 4-Step Circuit Architecture -->
-      <div class="circuit-hops-container">
-        
-        <div class="telemetry-card circuit-hop-card" data-hop="hop-client">
-          <div class="hop-step">ÉTAPE 01</div>
-          <div class="hop-name">ÉMETTEUR (CLIENT)</div>
-          <div class="hop-loc">Poste / Mobile Chiffré</div>
-        </div>
-
-        <div class="telemetry-card circuit-hop-card" data-hop="hop-guard">
-          <div class="hop-step">ÉTAPE 02</div>
-          <div class="hop-name">GUARD RELAY</div>
-          <div class="hop-loc">Nœud d'Entrée</div>
-        </div>
-
-        <div class="telemetry-card circuit-hop-card sol12-highlight active-hop" data-hop="hop-middle">
-          <div class="hop-step" style="color: var(--accent-mars);">ÉTAPE 03 // SOL12</div>
-          <div class="hop-name">MIDDLE RELAY</div>
-          <div class="hop-loc">Suisse (Zurich / Genève)</div>
-        </div>
-
-        <div class="telemetry-card circuit-hop-card" data-hop="hop-exit">
-          <div class="hop-step">ÉTAPE 04</div>
-          <div class="hop-name">EXIT RELAY</div>
-          <div class="hop-loc">Nœud de Sortie</div>
-        </div>
-
-      </div>
-
-      <!-- Inspector Panel -->
-      <div class="circuit-inspector-box">
-        <div class="flex items-center justify-between border-b border-space-border pb-3">
-          <h3 id="circuit-detail-title" class="font-telemetry font-bold text-lg tracking-telemetry text-white uppercase">
-            03. MIDDLE RELAY SOL12 (Suisse - Cœur Étanche)
-          </h3>
-          <span class="telemetry-pill telemetry-pill-mars">ISOLATION CRYPTOGRAPHIQUE TOTALE</span>
-        </div>
-
-        <p id="circuit-detail-desc" class="text-space-muted text-sm mt-3 leading-relaxed">
-          Le relais SOL12 en Suisse déchiffre la 2ème enveloppe cryptographique. C'est le pivot fondamental qui casse la traçabilité statistique et rend impossible toute corrélation temporelle entre votre adresse IP d'origine et votre destination.
-        </p>
-
-        <div class="inspector-grid">
-          <div class="inspector-pane" style="border-left: 3px solid var(--accent-cyan);">
-            <div class="inspector-pane-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              CE QUE LE MIDDLE RELAY CONNAÎT
-            </div>
-            <p id="circuit-detail-known" class="text-white">
-              Connaît uniquement l'adresse IP du Guard Relay précédent et l'adresse IP du nœud de sortie suivant.
+              Implantés en Suisse, nos serveurs bénéficient d'un cadre juridique stable et protecteur, hermétique aux pressions extra-territoriales et aux directives de surveillance de masse de l'UE.
             </p>
           </div>
 
-          <div class="inspector-pane" style="border-left: 3px solid var(--status-ok);">
-            <div class="inspector-pane-title" style="color: var(--status-ok);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              CE QUI EST TOTALEMENT INVISIBLE POUR SOL12
-            </div>
-            <p id="circuit-detail-hidden" style="color: #4ade80;">
-              IGNORE TOTALEMENT VOTRE ADRESSE IP RÉELLE ! IGNORE LE CONTENU DU MESSAGE ! IGNORE LA DESTINATION FINALE !
+          <div class="telemetry-card manifesto-card">
+            <div class="manifesto-num">04</div>
+            <h3>Don au Bien Commun</h3>
+            <p>
+              Nous opérons ces relais de manière bénévole et financée sur fonds propres pour densifier le réseau mondial Tor, au service des journalistes, militants et citoyens du monde entier.
             </p>
           </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
 
   <!-- =========================================================================
-       SECTION 03: TÉLÉMÉTRIE EN DIRECT DES RELAIS SOL12 (SPACEX DASHBOARD STYLE)
-       ========================================================================= -->
-  <section id="telemetrie" class="section-padding scroll-reveal">
-    <div class="container">
-      
-      <div class="section-header">
-        <span class="section-tag font-mono">// 03. TÉLÉMÉTRIE D'INFRASTRUCTURE EN TEMPS RÉEL</span>
-        <h2 class="section-title">Les Relais Tor SOL12 en Production</h2>
-        <p class="section-subtitle">
-          Inspiré par le tableau de bord télémétrique SpaceX de tor-monitor, voici l'état opérationnel continu de nos nœuds suisses dédiés au réseau Tor.
-        </p>
-      </div>
-
-      <!-- Relays Grid -->
-      <div class="relays-grid">
-        
-        <!-- RELAY 01: ZURICH TIER-IV -->
-        <div class="telemetry-card relay-card">
-          <div class="relay-header-bar">
-            <div class="relay-id-box">
-              <h3>SOL12NET_CH01</h3>
-              <span class="telemetry-header">// MIDDLE RELAY · ZURICH (DATACENTER TIER IV)</span>
-            </div>
-            <div class="telemetry-pill telemetry-pill-ok">
-              <span class="beacon-dot"></span>
-              <span>CONSENSUS ACTIF</span>
-            </div>
-          </div>
-
-          <!-- Fingerprint with copy -->
-          <div class="relay-fingerprint-box">
-            <span class="fp-text" id="fp-relay-1">4A9D 8F21 C765 0BE3 9812 56AD EF34 1198 77AC 09E1</span>
-            <button class="btn-copy-fp" data-copy-target="fp-relay-1" aria-label="Copier l'empreinte Tor de SOL12NET_CH01">
-              COPIER FP
-            </button>
-          </div>
-
-          <!-- Tor Consensus Flags -->
-          <div class="relay-flags-row">
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[FAST]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[RUNNING]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[STABLE]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[VALID]</span>
-            <span class="flag-chip" style="color: var(--accent-cyan); border-color: rgba(125, 211, 252, 0.4);">[V2DIR]</span>
-            <span class="flag-chip">[MIDDLE]</span>
-          </div>
-
-          <!-- Live Bandwidth Sparkline Chart -->
-          <div class="bw-sparkline-box">
-            <div class="bw-sparkline-header">
-              <span class="telemetry-header">DÉBIT RÉSEAU DIRECT</span>
-              <div class="bw-legend">
-                <span class="legend-rx">RX: <strong class="readout-rx">682.4 Mb/s</strong></span>
-                <span class="legend-tx">TX: <strong class="readout-tx">624.1 Mb/s</strong></span>
-              </div>
-            </div>
-            <canvas id="live-bw-canvas-01" class="sparkline-canvas"></canvas>
-          </div>
-
-          <!-- Specs Table -->
-          <table class="relay-specs-table">
-            <tbody>
-              <tr>
-                <td>Matériel</td>
-                <td>AMD EPYC™ 7763 · 64 Cores · 64 GB DDR4 ECC</td>
-              </tr>
-              <tr>
-                <td>Stockage &amp; Système</td>
-                <td>100% RAM tmpfs · Disques chiffrés LUKS · Kernel durci</td>
-              </tr>
-              <tr>
-                <td>Connectivité</td>
-                <td>10 Gbps Fibre noire dédiée non filtrée</td>
-              </tr>
-              <tr>
-                <td>Ports Réseau</td>
-                <td>ORPort 9001 · DirPort 9030 · IPv4/IPv6 Dual Stack</td>
-              </tr>
-              <tr>
-                <td>Juridiction</td>
-                <td>Canton de Zurich, Suisse (Protection LPD)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- RELAY 02: GENEVA ALPINE BUNKER -->
-        <div class="telemetry-card relay-card">
-          <div class="relay-header-bar">
-            <div class="relay-id-box">
-              <h3>SOL12NET_CH02</h3>
-              <span class="telemetry-header">// MIDDLE RELAY · GENÈVE (ABRI FORTIFIÉ SOUS ROCHE)</span>
-            </div>
-            <div class="telemetry-pill telemetry-pill-ok">
-              <span class="beacon-dot"></span>
-              <span>CONSENSUS ACTIF</span>
-            </div>
-          </div>
-
-          <!-- Fingerprint with copy -->
-          <div class="relay-fingerprint-box">
-            <span class="fp-text" id="fp-relay-2">B1E8 3490 FE45 2210 98A7 65DC BA43 1290 88FE 4321</span>
-            <button class="btn-copy-fp" data-copy-target="fp-relay-2" aria-label="Copier l'empreinte Tor de SOL12NET_CH02">
-              COPIER FP
-            </button>
-          </div>
-
-          <!-- Tor Consensus Flags -->
-          <div class="relay-flags-row">
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[FAST]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[RUNNING]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[STABLE]</span>
-            <span class="flag-chip" style="color: var(--status-ok); border-color: rgba(34, 197, 94, 0.4);">[VALID]</span>
-            <span class="flag-chip" style="color: var(--accent-cyan); border-color: rgba(125, 211, 252, 0.4);">[V2DIR]</span>
-            <span class="flag-chip">[MIDDLE]</span>
-          </div>
-
-          <!-- Live Bandwidth Sparkline Chart -->
-          <div class="bw-sparkline-box">
-            <div class="bw-sparkline-header">
-              <span class="telemetry-header">DÉBIT RÉSEAU DIRECT</span>
-              <div class="bw-legend">
-                <span class="legend-rx">RX: <strong class="readout-rx">594.8 Mb/s</strong></span>
-                <span class="legend-tx">TX: <strong class="readout-tx">541.2 Mb/s</strong></span>
-              </div>
-            </div>
-            <canvas id="live-bw-canvas-02" class="sparkline-canvas"></canvas>
-          </div>
-
-          <!-- Specs Table -->
-          <table class="relay-specs-table">
-            <tbody>
-              <tr>
-                <td>Matériel</td>
-                <td>Dual Intel Xeon Platinum · 32 Cores · 64 GB ECC</td>
-              </tr>
-              <tr>
-                <td>Stockage &amp; Système</td>
-                <td>Volatile RAM-only · Zéro fichier log persistant</td>
-              </tr>
-              <tr>
-                <td>Connectivité</td>
-                <td>10 Gbps Uplink redondé multi-transitaires</td>
-              </tr>
-              <tr>
-                <td>Ports Réseau</td>
-                <td>ORPort 9001 · DirPort 9030 · IPv4/IPv6 Dual Stack</td>
-              </tr>
-              <tr>
-                <td>Juridiction</td>
-                <td>Canton de Genève, Suisse (Protection LPD)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-
-      <!-- Telemetry Actions Bar -->
-      <div class="metrics-action-bar">
-        <div class="flex items-center gap-3">
-          <span class="telemetry-header">FORMAT TÉLÉMÉTRIQUE OUVERT</span>
-          <span class="text-xs text-space-dim">// JSON CERTIFIÉ SHA-256</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <button id="btn-export-metrics" class="btn btn-outline btn-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Exporter Métriques JSON</span>
-          </button>
-          <a href="https://gitlab.torproject.org/" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-sm">
-            <span>Code Source Tor Project ↗</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 04: NOTRE MANIFESTE POUR UN WEB LIBRE ET OUVERT
-       ========================================================================= -->
-  <section id="manifeste" class="section-padding scroll-reveal">
-    <div class="container">
-      
-      <div class="section-header">
-        <span class="section-tag font-mono">// 04. PRINCIPES NON NÉGOCIABLES</span>
-        <h2 class="section-title">Le Manifeste SOL12</h2>
-        <p class="section-subtitle">
-          Quatre engagements fondamentaux qui guident chaque serveur mis en ligne, chaque gigaoctet relayé et chaque ligne de code que nous déployons.
-        </p>
-      </div>
-
-      <div class="manifesto-grid">
-        
-        <div class="telemetry-card manifesto-card">
-          <div class="manifesto-num">01</div>
-          <h4>Chiffrement Inconditionnel</h4>
-          <p>
-            Le chiffrement inviolable est un droit humain fondamental. Nous rejetons toute forme de porte dérobée, d'affaiblissement des algorithmes ou de scan préventif des appareils.
-          </p>
-        </div>
-
-        <div class="telemetry-card manifesto-card">
-          <div class="manifesto-num">02</div>
-          <h4>Zéro Persistance Disque</h4>
-          <p>
-            Ce qui n'est pas enregistré ne peut être ni piraté, ni saisi, ni divulgué. Nos nœuds fonctionnent intégralement en mémoire vive volatile et ne conservent aucun journal d'activité.
-          </p>
-        </div>
-
-        <div class="telemetry-card manifesto-card">
-          <div class="manifesto-num">03</div>
-          <h4>Neutralité Souveraine</h4>
-          <p>
-            Implantés en Suisse, nos serveurs bénéficient d'un cadre juridique stable et protecteur, hermétique aux pressions extra-territoriales et aux directives de surveillance de masse de l'UE.
-          </p>
-        </div>
-
-        <div class="telemetry-card manifesto-card">
-          <div class="manifesto-num">04</div>
-          <h4>Don au Bien Commun</h4>
-          <p>
-            Nous opérons ces relais de manière bénévole et financée sur fonds propres pour densifier le réseau mondial Tor, au service des journalistes, militants et citoyens du monde entier.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       FOOTER: MISSION CONTROL STATUS & LEGAL TRANSPARENCY
+       FOOTER
        ========================================================================= -->
   <footer class="footer">
-    <div class="container">
-      
-      <div class="footer-top">
-        
-        <div class="footer-brand-col">
-          <div class="nav-brand">
-            <div class="brand-symbol">12</div>
-            <div class="brand-text">
-              <span class="brand-name">SOL12 NETWORK</span>
-              <span class="brand-sub">// SOUVERAINETÉ NUMÉRIQUE & VIE PRIVÉE</span>
-            </div>
-          </div>
-          <p>
-            Initiative indépendante d'infrastructure pour la liberté d'expression et la confidentialité numérique. Nous exploitons des middle relais Tor durcis depuis la Confédération Suisse.
-          </p>
-          <div class="flex items-center gap-2 mt-2">
-            <span class="telemetry-pill telemetry-pill-ok">
-              <span class="beacon-dot"></span>
-              <span>NO LOGS GUARANTEE · SWISS LPD</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>// NAVIGATION</h5>
-          <ul class="footer-links">
-            <li><a href="#offensive-ue">Offensive UE &amp; Menaces</a></li>
-            <li><a href="#sanctuaire-suisse">Le Sanctuaire Suisse</a></li>
-            <li><a href="#circuit-tor">Architecture Tor</a></li>
-            <li><a href="#telemetrie">Télémétrie en Direct</a></li>
-            <li><a href="#manifeste">Manifeste SOL12</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>// AUTODÉFENSE NUMÉRIQUE</h5>
-          <ul class="footer-links">
-            <li><a href="https://www.torproject.org/download/" target="_blank" rel="noopener noreferrer">Télécharger Tor Browser ↗</a></li>
-            <li><a href="https://stopscanningme.eu/" target="_blank" rel="noopener noreferrer">Campagne Stop Chat Control ↗</a></li>
-            <li><a href="https://www.eff.org/" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation ↗</a></li>
-            <li><a href="https://www.laquadrature.net/" target="_blank" rel="noopener noreferrer">La Quadrature du Net ↗</a></li>
-            <li><a href="https://noyb.eu/" target="_blank" rel="noopener noreferrer">NOYB (Max Schrems) ↗</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>// TÉLÉMÉTRIE & CODE</h5>
-          <ul class="footer-links">
-            <li><a href="https://github.com/SOL12-NET/tor-monitor" target="_blank" rel="noopener noreferrer">GitHub / tor-monitor ↗</a></li>
-            <li><a href="https://github.com/SOL12-NET/sol12-website" target="_blank" rel="noopener noreferrer">GitHub / sol12-website ↗</a></li>
-            <li><a href="https://metrics.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Metrics Officiel ↗</a></li>
-            <li><a href="mailto:contact@sol12.net">Contact PGP / Sécurisé ↗</a></li>
-          </ul>
-        </div>
-
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">SOL12 // RELAIS TOR SUISSE</span>
+        <p class="footer-desc">
+          Initiative citoyenne indépendante pour la défense du chiffrement fort, de la vie privée et de la liberté d'expression.
+        </p>
       </div>
 
-      <div class="footer-bottom">
-        <div>
-          <span>© 2026 SOL12 NETWORK. Hébergé en Suisse · Tous droits de communication réservés.</span>
+      <div class="footer-right">
+        <div class="footer-meta">
+          <span>JURIDICTION : SUISSE · ART. 13 Cst</span>
+          <span>POLITIQUE : STRICT ZERO-LOG</span>
         </div>
-        <div class="flex items-center gap-4">
-          <span>RÉF : CONFÉDÉRATION HELVÉTIQUE ART. 13 Cst</span>
-          <span>BUILD : SPACEX-TELEMETRY-v2.4</span>
+        <div class="footer-links">
+          <a href="https://metrics.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Metrics ↗</a>
+          <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Project ↗</a>
+          <a href="https://github.com/SOL12-NET" target="_blank" rel="noopener noreferrer">GitHub / SOL12-NET ↗</a>
         </div>
       </div>
-
     </div>
   </footer>
 
-  <!-- Self-hosted Three.js Engine & 3D Mars Orbit Simulation -->
+  <!-- 3D Engine & Interactive Logic -->
   <script src="js/three.min.js"></script>
   <script src="js/GLTFLoader.js"></script>
   <script src="js/mars-globe.js"></script>

@@ -56,6 +56,7 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x000000, 0);
 
     if (renderer.toneMapping !== undefined) {
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
