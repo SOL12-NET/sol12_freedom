@@ -261,10 +261,43 @@ body {
   gap: 1rem;
 }
 
-.nav-links { margin-left: auto; }
-.nav-relays-link { background: var(--accent-cyan); border-color: var(--accent-cyan); color: #07131b; letter-spacing: 0.08em; white-space: nowrap; padding: 0.65rem 1rem; }
-.nav-relays-link:hover { background: #bae6fd; border-color: #bae6fd; }
-.nav-relays-link[aria-current="page"] { box-shadow: 0 0 0 3px var(--accent-cyan-dim); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-telemetry);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--space-muted);
+  text-decoration: none;
+  padding: 0.45rem 0.95rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  border-color: var(--space-border-bright);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: #ffffff;
+  border-color: rgba(249, 115, 22, 0.5);
+  background: var(--accent-mars-dim);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.2);
+}
 .telemetry-pill[data-state="unknown"], .telemetry-pill[data-state="starting"] { color: var(--space-muted); }
 .telemetry-pill[data-state="unknown"] .beacon-dot, .telemetry-pill[data-state="starting"] .beacon-dot { background: var(--space-dim); }
 .telemetry-pill[data-state="unknown"] .beacon-dot::after, .telemetry-pill[data-state="starting"] .beacon-dot::after { display: none; }
@@ -995,10 +1028,8 @@ body {
   }
 }
 
-/* Keep navigation overrides after the shared button styles. */
-.nav-relays-link { padding: 0.65rem 1rem; font-size: 0.82rem; letter-spacing: 0.08em; }
 @media (max-width: 640px) {
-  .nav-relays-link { font-size: 0.72rem; padding: 0.6rem 0.7rem; }
+  .nav-link { font-size: 0.72rem; padding: 0.35rem 0.6rem; }
   .nav-brand .brand-sub { display: none; }
   .nav-brand #logo-simulator { width: 40px; height: 40px; }
 }
