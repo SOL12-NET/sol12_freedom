@@ -16,7 +16,6 @@
   const cards = new Map();
   const samples = new Map();
   const list = document.getElementById('relay-list');
-  const notice = document.getElementById('relays-notice');
   let relays = [];
   let stream = null;
   let pollTimer = null;
@@ -208,11 +207,8 @@
       }
       relays.forEach(renderStatus);
       lastRefresh = Date.now();
-      if (notice) notice.textContent = 'Live telemetry streaming from our Swiss relay infrastructure.';
     } catch (_) {
       if (!running || currentGeneration !== generation) return;
-      // Fallback gracefully without ugly red error states
-      if (notice) notice.textContent = 'Connected to Swiss relay registry. Direct statistics available on tor.sol12.net.';
     } finally {
       loading = false;
       if (running) renderFleet();
