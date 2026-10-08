@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 
 import httpx
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, PlainTextResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.control import TorControlManager
@@ -230,6 +230,16 @@ async def relay_stream():
             fleet.clients.discard(queue)
 
     return StreamingResponse(events(), media_type="text/event-stream", headers={"X-Accel-Buffering": "no", "Cache-Control": "no-store"})
+
+
+# Tor ContactInfo Information Sharing Specification (CIISS) proof for url:https://freedom.sol12.net.
+# One RSA fingerprint per line; add new relays that use this ContactInfo here.
+TOR_RELAY_RSA_FINGERPRINTS = ("DD567C87E657AC4B1C7DADB536C394020C6A1B03",)
+
+
+@app.api_route("/.well-known/tor-relay/rsa-fingerprint.txt", methods=["GET", "HEAD"], include_in_schema=False)
+async def tor_relay_rsa_fingerprint():
+    return PlainTextResponse("".join(fingerprint + "\n" for fingerprint in TOR_RELAY_RSA_FINGERPRINTS))
 
 
 # Explicit static allowlist: never serve source code, environment files, or cookies.
