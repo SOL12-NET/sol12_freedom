@@ -5,7 +5,7 @@ RUN groupadd -g 10001 appuser && useradd -u 10001 -g appuser -s /usr/sbin/nologi
 COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY backend/ /app/backend/
-COPY index.html relays.html relays.json favicon.ico favicon.svg /app/
+COPY index.html relays.html relays.json favicon.ico favicon.svg favicon-32.png apple-touch-icon.png /app/
 COPY assets/ /app/assets/
 COPY css/ /app/css/
 COPY fonts/ /app/fonts/

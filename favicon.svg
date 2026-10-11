@@ -1,14 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#030305"/>
-  <ellipse cx="32" cy="32" rx="25" ry="10" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.4" transform="rotate(-25 32 32)"/>
-  <circle cx="32" cy="32" r="15" fill="#d64513" opacity="0.25"/>
-  <circle cx="32" cy="32" r="12" fill="url(#marsGrad)"/>
-  <circle cx="15" cy="24" r="2" fill="#00f0ff" opacity="0.95"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <radialGradient id="marsGrad" cx="35%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#ff7b4d"/>
-      <stop offset="70%" stop-color="#d64513"/>
-      <stop offset="100%" stop-color="#8b2500"/>
+    <!-- Radial gradient giving Mars spherical shading -->
+    <radialGradient id="marsGrad" cx="38%" cy="32%" r="65%" fx="34%" fy="28%">
+      <stop offset="0%" stop-color="#F27A4B" />
+      <stop offset="35%" stop-color="#D94E28" />
+      <stop offset="70%" stop-color="#A52C0D" />
+      <stop offset="95%" stop-color="#5E1404" />
+      <stop offset="100%" stop-color="#3D0B02" />
     </radialGradient>
+    <!-- Clip path to keep surface features strictly within Mars disk -->
+    <clipPath id="marsClip">
+      <circle cx="32" cy="32" r="30" />
+    </clipPath>
   </defs>
+
+  <!-- Mars Planet Body (radius 30 in 64x64 frame fills 60/64 = 93.75% ~ 94%) -->
+  <circle cx="32" cy="32" r="30" fill="url(#marsGrad)" />
+
+  <!-- Surface Features / Darker Albedo Spots (clipped to disk, transparent background) -->
+  <g clip-path="url(#marsClip)" opacity="0.45">
+    <!-- Syrtis Major albedo feature -->
+    <path d="M 22 28 C 25 22, 34 24, 38 30 C 40 34, 33 42, 28 40 C 23 38, 20 32, 22 28 Z" fill="#240701" />
+    <!-- Acidalia Planitia dark patch -->
+    <ellipse cx="36" cy="18" rx="10" ry="5" fill="#2E0A02" transform="rotate(-12 36 18)" />
+    <!-- Southern Mare albedo patch -->
+    <path d="M 24 45 C 30 43, 38 46, 44 43 C 41 48, 32 51, 25 49 Z" fill="#240701" />
+  </g>
 </svg>
