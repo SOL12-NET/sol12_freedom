@@ -249,7 +249,7 @@ for directory in ("assets", "css", "fonts", "js"):
 
 @app.get("/{page:path}", include_in_schema=False)
 async def static_page(page: str):
-    allowed = {"": "index.html", "index.html": "index.html", "relays.html": "relays.html", "relays.json": "relays.json", "favicon.ico": "favicon.ico", "favicon.svg": "favicon.svg"}
+    allowed = {"": "index.html", "index.html": "index.html", "relays.html": "relays.html", "relays.json": "relays.json", "favicon.ico": "favicon.ico", "favicon.svg": "favicon.svg", "favicon-32.png": "favicon-32.png", "apple-touch-icon.png": "apple-touch-icon.png"}
     if page not in allowed:
         raise HTTPException(404, "Not found")
     return FileResponse(ROOT / allowed[page])
