@@ -5,12 +5,13 @@ No third-party CDN or external servers are contacted. All font assets are bundle
 
 ---
 
-## 1. Barlow Semi Condensed
-- **Role**: Section titles, uppercase telemetry labels, key metrics and figures.
-- **Designer**: Jeremy Tribby
+## 1. Orbitron
+- **Role**: Brand identity, hero titles, section headings, relay nicknames.
+- **Source**: github.com/google/fonts (ofl/orbitron), Latin subset
+- **Version**: 2.001
 - **License**: SIL Open Font License 1.1 (OFL-1.1)
-- **Copyright**: Copyright (c) 2017 The Barlow Project Authors (https://github.com/jpt/barlow)
-- **Package**: `@fontsource/barlow-semi-condensed` (v5.3.0)
+- **License File**: `OFL-Orbitron.txt`
+- **Copyright**: Copyright 2018 The Orbitron Project Authors (https://github.com/theleagueof/orbitron)
 
 ## 2. Inter
 - **Role**: Body text, table rows, descriptions, tooltips, with `font-feature-settings: "tnum", "cv11"`.
