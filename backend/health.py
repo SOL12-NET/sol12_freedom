@@ -117,7 +117,7 @@ def evaluate_relay_health(
 
     Returns overall status ('OK', 'DEGRADED', 'DOWN', 'STARTING') and detailed criteria.
     """
-    control_port = control_port or 9052
+    control_port = control_port or 9051
     active_tracker = tracker or liveness_tracker
 
     # Rule 5: Ignore stem_info completely if not connected

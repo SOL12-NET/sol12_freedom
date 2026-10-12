@@ -8,13 +8,11 @@ services:
     ports:
       - "127.0.0.1:${PORT:-8091}:8000"
     volumes:
-      # Mount ONLY the authentication cookie, never the Tor identity/key volume.
-      - type: bind
-        source: ${TOR_COOKIE_HOST_PATH:-/var/lib/docker/volumes/tor-docker_tor-data/_data/control_auth_cookie}
-        target: /run/tor/sol12net/control_auth_cookie
+      # Mount ONLY the cookie volume, never tor-data.
+      - type: volume
+        source: tor-cookie
+        target: /run/tor/sol12net
         read_only: true
-        bind:
-          create_host_path: false
     user: "10001:10001"
     group_add:
       - "${TOR_COOKIE_GID:-101}"
@@ -38,3 +36,8 @@ networks:
   npm_net:
     external: true
     name: ${NPM_NETWORK_NAME:-nginx-proxy-manager_default}
+
+volumes:
+  tor-cookie:
+    external: true
+    name: tor-docker_tor-cookie

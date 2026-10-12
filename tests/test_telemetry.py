@@ -76,8 +76,8 @@ def test_unconfigured_relay_reports_unknown_not_down():
 
 
 def test_each_relay_has_independent_liveness_tracker():
-    first = TorControlManager(ControlSettings("relay-a", 9052, "/cookie-a", METADATA["fingerprint"]))
-    second = TorControlManager(ControlSettings("relay-b", 9052, "/cookie-b", METADATA["fingerprint"]))
+    first = TorControlManager(ControlSettings("relay-a", 9051, "/cookie-a", METADATA["fingerprint"]))
+    second = TorControlManager(ControlSettings("relay-b", 9051, "/cookie-b", METADATA["fingerprint"]))
     for _ in range(3):
         first.record_stem_data({"stem_info": {"network-liveness": "down"}, "polled_at": time.time()})
     assert first.tracker.get_state()[0]
