@@ -83,7 +83,7 @@ class Relay:
         prefix = metadata["id"].upper()
         settings = ControlSettings(
             TOR_CONTROL_HOST=os.getenv(prefix + "_CONTROL_HOST", ""),
-            TOR_CONTROL_PORT=int(os.getenv(prefix + "_CONTROL_PORT", "9052")),
+            TOR_CONTROL_PORT=int(os.getenv(prefix + "_CONTROL_PORT", "9051")),
             TOR_COOKIE_CONTAINER_PATH=os.getenv(prefix + "_COOKIE_PATH", "/run/tor/" + metadata["id"] + "/control_auth_cookie"),
             TOR_FINGERPRINT=metadata["fingerprint"].upper(),
         )

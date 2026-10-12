@@ -19,7 +19,7 @@ Les données restent en mémoire, sans base de données. Les mesures de débit d
 La nouvelle collecte exige le backend : un simple hébergement de fichiers statiques ne peut pas lire le ControlPort.
 
 1. Copier `.env.example` vers `.env` et vérifier les valeurs.
-2. Vérifier le GID réel du cookie avec `stat -c '%g' /var/lib/docker/volumes/tor-docker_tor-data/_data/control_auth_cookie`, puis renseigner `TOR_COOKIE_GID`. Le conteneur reste non-root.
+2. Vérifier le GID réel du cookie avec `docker run --rm -v tor-docker_tor-cookie:/c:ro alpine stat -c '%g' /c/control_auth_cookie`, puis renseigner `TOR_COOKIE_GID`. Le conteneur reste non-root.
 3. Reconstruire/recréer le service `sol12-freedom` avec `docker compose up -d --build`. Si ce nom est déjà géré par une autre stack Compose, y remplacer le service et y reporter les réseaux et le montage de cookie avant de le recréer ; ne pas lancer une deuxième stack concurrente.
 4. Dans Nginx Proxy Manager, faire pointer `freedom.sol12.net` vers **http://sol12-freedom:8000** sur `nginx-proxy-manager_default` (le port interne change si l'ancien site écoutait sur 80).
 5. Pour le flux SSE, ajouter dans la configuration avancée du proxy host :
@@ -32,7 +32,7 @@ proxy_read_timeout 60s;
 
 6. Vérifier `/healthz`, `/api/relays`, puis `/relays.html`. Attendre la première collecte (au plus 20 secondes) et le chargement Onionoo. Vérifier que les débits évoluent et que le lien Full statistics ouvre tor.sol12.net.
 
-Le service est connecté à `tor-docker_default` et `nginx-proxy-manager_default`. Il cible **tor-relay:9052**, le sidecar socat relayant vers le ControlPort local 9051. Aucun port de contrôle n'est publié. Seul le fichier `control_auth_cookie` est monté en lecture seule, jamais le volume contenant les clés du relais. Le collecteur vérifie aussi l'empreinte du relais après authentification. Après un redémarrage de Tor qui remplace le fichier cookie, recréer Freedom pour renouveler le montage : `docker compose up -d --force-recreate sol12-freedom`.
+Le service est connecté à `tor-docker_default` et `nginx-proxy-manager_default`. Il cible **tor-relay:9051**, sans sidecar socat. Aucun port de contrôle n'est publié. Seul le volume tor-cookie, qui ne contient que le cookie, est monté en lecture seule, jamais le volume contenant les clés du relais. Le collecteur vérifie aussi l'empreinte du relais après authentification.
 
 Le backend désactive les journaux HTTP d'accès et ne sert que les répertoires et fichiers publics autorisés. Les paramètres internes et le cookie ne sont jamais envoyés au navigateur. Garder une seule instance/worker Uvicorn pour partager les connexions et les caches mémoire.
 
