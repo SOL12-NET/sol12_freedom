@@ -1,29 +1,22 @@
 /* Self-hosted SpaceX / Telemetry Fonts for SOL12 */
 
-/* Barlow Semi Condensed - Aerospace & Telemetry Headers */
+/* Orbitron - Display & Brand Headers */
 @font-face {
-  font-family: 'Barlow Semi Condensed';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/barlow-semi-condensed-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Barlow Semi Condensed';
+  font-family: 'Orbitron';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('../fonts/barlow-semi-condensed-600.woff2') format('woff2');
+  src: url('../fonts/orbitron-600.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Barlow Semi Condensed';
+  font-family: 'Orbitron';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../fonts/barlow-semi-condensed-700.woff2') format('woff2');
+  src: url('../fonts/orbitron-700.woff2') format('woff2');
 }
+
 
 /* Inter - High-Legibility Body Text */
 @font-face {
