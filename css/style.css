@@ -1,4 +1,4 @@
-@import "./fonts.css";
+@import "./fonts.css?v=20261012";
 
 /* ==========================================================================
    SOL12 TELEMETRY DESIGN SYSTEM (SPACEX NOIR & SWISS PRIVACY INFRASTRUCTURE)
@@ -36,6 +36,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+strong, b {
+  font-weight: 600;
 }
 
 html {
@@ -107,6 +116,10 @@ body {
 /* Typography Helpers */
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
+.font-mono strong,
+.font-mono b {
+  font-weight: 500;
+}
 .font-sans { font-family: var(--font-sans); }
 
 .tracking-telemetry {
@@ -134,7 +147,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--space-muted);
 }
 
@@ -173,6 +186,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--space-muted);
@@ -253,6 +267,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.65rem;
+  font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--space-dim);
   text-transform: uppercase;
@@ -352,7 +367,9 @@ body {
 
 .fleet-link-highlight {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.78rem;
+  font-weight: 500;
   color: var(--accent-cyan);
   text-decoration: none;
   transition: color 0.15s ease;
@@ -368,8 +385,10 @@ body {
 
 .relays-notice {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   color: var(--space-dim);
   font-size: 0.78rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
@@ -432,6 +451,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.68rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent-mars);
@@ -445,7 +465,10 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.82rem;
+  font-weight: 400;
   color: var(--space-muted);
 }
 
@@ -470,7 +493,6 @@ body {
   box-sizing: border-box;
   padding: 0 0.85rem;
   font-size: 0.72rem;
-  font-weight: 600;
   text-transform: uppercase;
   border-radius: 2px;
   line-height: 1;
@@ -479,6 +501,7 @@ body {
 .relay-status-group .telemetry-pill {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  font-weight: 500;
   letter-spacing: 0.06em;
   gap: 0.45rem;
   cursor: default;
@@ -486,6 +509,7 @@ body {
 
 .relay-status-group .relay-action-btn {
   font-family: var(--font-sans);
+  font-weight: 600;
   letter-spacing: 0.04em;
   gap: 0.45rem;
   background-color: var(--accent-mars-dim);
@@ -543,6 +567,11 @@ body {
   gap: 0.3rem;
 }
 
+.metric-val strong,
+.metric-val b {
+  font-weight: 500;
+}
+
 .metric-val.text-cyan {
   color: var(--accent-cyan);
 }
@@ -557,7 +586,10 @@ body {
 }
 
 .metric-unit {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.7rem;
+  font-weight: 400;
   color: var(--space-dim);
 }
 
@@ -594,6 +626,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
+  font-weight: 400;
   color: var(--space-muted);
   letter-spacing: 0.04em;
   overflow-wrap: anywhere;
@@ -640,7 +673,9 @@ body {
 
 .relay-flag-chip {
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
   font-size: 0.65rem;
+  font-weight: 400;
   padding: 0.15rem 0.4rem;
   background: var(--space-card-elevated);
   border: 1px solid var(--space-border);
@@ -655,6 +690,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.7rem;
+  font-weight: 400;
   color: var(--space-dim);
 }
 
@@ -682,11 +718,13 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.65rem;
+  font-weight: 500;
   color: var(--accent-mars);
   letter-spacing: 0.06em;
 }
 
 .relays-footnote-box p {
+  font-family: var(--font-sans);
   font-size: 0.88rem;
   color: var(--space-muted);
   line-height: 1.65;
@@ -731,6 +769,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
+  font-weight: 400;
   color: var(--space-muted);
   background: var(--space-panel);
   border: 1px solid var(--space-border);
@@ -801,9 +840,9 @@ body {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.22fr 0.98fr;
   align-items: center;
-  gap: 3.5rem;
+  gap: 3rem;
 }
 
 /* Left Column: Narrative */
@@ -823,16 +862,21 @@ body {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.2rem + 4vw, 4.25rem);
+  font-size: clamp(1.9rem, 1rem + 2.6vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.08;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
   overflow-wrap: break-word;
 }
 
+.hero-title br {
+  display: none;
+}
+
 .hero-title-highlight {
+  display: block;
   color: var(--accent-mars);
 }
 
@@ -843,6 +887,7 @@ body {
 }
 
 .hero-paragraph {
+  font-family: var(--font-sans);
   font-size: 1.12rem;
   line-height: 1.75;
   color: #d4d4d8;
@@ -922,6 +967,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent-mars);
@@ -941,6 +987,7 @@ body {
 }
 
 .section-subtitle {
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   color: var(--space-muted);
   max-width: 780px;
@@ -973,7 +1020,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--accent-mars);
   margin-bottom: 0.75rem;
 }
@@ -989,6 +1036,7 @@ body {
 }
 
 .manifesto-card p {
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   color: var(--space-muted);
   line-height: 1.65;
@@ -1034,10 +1082,13 @@ body {
 .footer-brand-tag {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  font-weight: 400;
   letter-spacing: 0.06em;
 }
 
 .footer-desc {
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   color: var(--space-dim);
   line-height: 1.5;
@@ -1057,6 +1108,7 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
+  font-weight: 400;
   color: var(--space-dim);
 }
 

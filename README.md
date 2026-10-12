@@ -43,6 +43,16 @@ Le backend désactive les journaux HTTP d'accès et ne sert que les répertoires
 3. Monter uniquement son cookie en lecture seule et connecter Freedom au réseau privé de ce relais. Adapter `group_add` si le cookie appartient à un autre groupe.
 4. Reconstruire le conteneur. La carte et son flux de débit apparaissent automatiquement, sans modification du HTML ou du JavaScript.
 
+## Polices et typographie
+
+Le site utilise exclusivement des polices libres auto-hébergées au format WOFF2 avec `font-display: swap`, sans aucun appel externe, conformément à la politique CSP (`font-src 'self'`) :
+
+- **Orbitron** (600, 700) : identité SOL12 (nav, footer), grands titres structurants (*Private by design. Free by principle.*, *The SOL12 Manifesto*, *Our Tor Relays*), noms des relais. Licence OFL 1.1 (`fonts/OFL-Orbitron.txt`).
+- **Inter** (400, 500, 600) : paragraphes, descriptions, h3 des cartes, navigation, boutons, liens d'action, citations, textes des relais et footer. Licence OFL 1.1 (`fonts/OFL-Inter.txt`).
+- **JetBrains Mono** (400, 500) : télémétrie technique, horloge UTC, débits, statuts, uptime, versions Tor, empreintes cryptographiques (avec `tabular-nums`), tags et métadonnées. Licence OFL 1.1 (`fonts/OFL-JetBrainsMono.txt`).
+
+Les détails et textes légaux complets sont répertoriés dans [`fonts/LICENSES.md`](fonts/LICENSES.md).
+
 ## Développement et vérification
 
 ```powershell
