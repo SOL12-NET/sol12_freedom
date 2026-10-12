@@ -1,12 +1,13 @@
 services:
   sol12-freedom:
     build: .
+    pull_policy: build
     image: sol12-freedom:local
     container_name: sol12-freedom
     restart: unless-stopped
     env_file: .env
     ports:
-      - "127.0.0.1:${PORT:-8091}:8000"
+      - "127.0.0.1:${PORT:-8099}:8000"
     volumes:
       # Mount ONLY the cookie volume, never tor-data.
       - type: volume
@@ -23,6 +24,7 @@ services:
       - /tmp:size=16M,mode=1777
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
+    cpus: 0.50
     mem_limit: 256m
     pids_limit: 64
     networks: [tor_net, npm_net]
@@ -31,6 +33,7 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+      start_period: 15s
 networks:
   tor_net:
     external: true
