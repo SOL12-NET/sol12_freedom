@@ -36,8 +36,16 @@ def test_ciiss_proof_keeps_security_headers(client):
     page = client.get("/")
     for header in ("content-security-policy", "x-content-type-options", "referrer-policy", "x-frame-options", "cache-control"):
         assert proof.headers[header] == page.headers[header]
+    assert "google" not in proof.headers["content-security-policy"]
 
 
 @pytest.mark.parametrize("path", ["/.well-known/", "/.well-known/tor-relay/", "/.well-known/tor-relay/other.txt", PATH + "/"])
 def test_other_well_known_paths_still_404(client, path):
     assert client.get(path, follow_redirects=False).status_code == 404
+
+
+def test_csp_contains_no_google_domains(client):
+    for path in (PATH, "/"):
+        csp = client.get(path).headers["content-security-policy"]
+        assert "google" not in csp
+

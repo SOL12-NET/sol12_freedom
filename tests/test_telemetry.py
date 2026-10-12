@@ -127,7 +127,8 @@ def test_both_pages_and_future_relay_registry(monkeypatch, tmp_path):
             response = client.get(page)
             assert response.status_code == 200
             assert "Our Tor Relays" in response.text
-            assert "connect-src 'self'" in response.headers["content-security-policy"]
+            assert "connect-src 'self' blob:" in response.headers["content-security-policy"]
+            assert "google" not in response.headers["content-security-policy"]
 
 
 def test_directory_collector_uses_onionoo_directly(monkeypatch):
@@ -178,3 +179,11 @@ def test_sse_rejects_extra_clients():
             await relay_stream()
         assert error.value.status_code == 503
     asyncio.run(run())
+
+
+def test_csp_contains_no_google_domains(monkeypatch):
+    monkeypatch.setattr(Relay, "collect_directory", AsyncMock())
+    with TestClient(app) as client:
+        for page in ("/", "/relays.html"):
+            csp = client.get(page).headers["content-security-policy"]
+            assert "google" not in csp
