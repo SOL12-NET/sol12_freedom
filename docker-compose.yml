@@ -13,6 +13,8 @@ services:
         source: tor-cookie
         target: /run/tor/sol12net
         read_only: true
+        volume:
+          nocopy: true
     user: "10001:10001"
     group_add:
       - "${TOR_COOKIE_GID:-101}"

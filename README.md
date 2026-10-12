@@ -32,7 +32,7 @@ proxy_read_timeout 60s;
 
 6. Vérifier `/healthz`, `/api/relays`, puis `/relays.html`. Attendre la première collecte (au plus 20 secondes) et le chargement Onionoo. Vérifier que les débits évoluent et que le lien Full statistics ouvre tor.sol12.net.
 
-Le service est connecté à `tor-docker_default` et `nginx-proxy-manager_default`. Il cible **tor-relay:9051**, sans sidecar socat. Aucun port de contrôle n'est publié. Seul le fichier `control_auth_cookie` est monté en lecture seule, jamais le volume contenant les clés du relais. Le collecteur vérifie aussi l'empreinte du relais après authentification. Après un redémarrage de Tor qui remplace le fichier cookie, recréer Freedom pour renouveler le montage : `docker compose up -d --force-recreate sol12-freedom`.
+Le service est connecté à `tor-docker_default` et `nginx-proxy-manager_default`. Il cible **tor-relay:9051**, sans sidecar socat. Aucun port de contrôle n'est publié. Seul le volume tor-cookie, qui ne contient que le cookie, est monté en lecture seule, jamais le volume contenant les clés du relais. Le collecteur vérifie aussi l'empreinte du relais après authentification.
 
 Le backend désactive les journaux HTTP d'accès et ne sert que les répertoires et fichiers publics autorisés. Les paramètres internes et le cookie ne sont jamais envoyés au navigateur. Garder une seule instance/worker Uvicorn pour partager les connexions et les caches mémoire.
 
