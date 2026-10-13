@@ -37,6 +37,30 @@
     if (el) el.textContent = value;
   }
 
+  function setBrandText(card, name, value) {
+    const el = field(card, name);
+    if (!el) return;
+    const text = String(value || '');
+    el.replaceChildren();
+    const regex = /(sol)(12)/gi;
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        el.append(document.createTextNode(text.slice(lastIndex, match.index)));
+      }
+      el.append(document.createTextNode(match[1]));
+      const span = document.createElement('span');
+      span.className = 'brand-orange';
+      span.textContent = match[2];
+      el.append(span);
+      lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      el.append(document.createTextNode(text.slice(lastIndex)));
+    }
+  }
+
   function uptime(seconds) {
     if (!Number.isFinite(seconds) || seconds < 0) return 'Active';
     const days = Math.floor(seconds / 86400);
@@ -68,7 +92,7 @@
     const card = template.content.firstElementChild.cloneNode(true);
     card.dataset.relayId = relay.id;
 
-    set(card, 'nickname', relay.nickname || 'SOL12net');
+    setBrandText(card, 'nickname', relay.nickname || 'SOL12net');
     set(card, 'fingerprint', formatFp(relay.fingerprint));
 
     const url = statsUrl(relay.stats_url || 'https://tor.sol12.net/');
@@ -104,7 +128,7 @@
     const card = cards.get(relay.id);
     if (!card) return;
 
-    set(card, 'nickname', relay.nickname || 'SOL12net');
+    setBrandText(card, 'nickname', relay.nickname || 'SOL12net');
     set(card, 'fingerprint', formatFp(relay.fingerprint));
 
     const rawStatus = relay.status || 'OK';

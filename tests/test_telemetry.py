@@ -187,3 +187,21 @@ def test_csp_contains_no_google_domains(monkeypatch):
         for page in ("/", "/relays.html"):
             csp = client.get(page).headers["content-security-policy"]
             assert "google" not in csp
+
+
+def test_shared_mars_logo_assets_and_fallback_markup(monkeypatch):
+    monkeypatch.setattr(Relay, "collect_directory", AsyncMock())
+    with TestClient(app) as client:
+        for page in ("/", "/relays.html"):
+            html = client.get(page).text
+            assert 'class="nav-brand"' in html
+            assert "assets/logo/mars-logo-fallback.png" in html
+            assert "assets/logo/mars_logo_512x256.jpg" in html
+            assert "js/sol12-mars-logo.js" in html
+            assert "SOVEREIGNTY &amp; ENCRYPTION" not in html
+            assert "Swiss Tor Relays for Privacy &amp; Free Expression" not in html
+        for asset in ("/assets/logo/mars_logo_512x256.jpg", "/assets/logo/mars-logo-fallback.png", "/js/sol12-mars-logo.js"):
+            assert client.get(asset).status_code == 200
+        for internal in ("/docs/mars-logo.md", "/scripts/generate_mars_logo_assets.py"):
+            assert client.get(internal).status_code == 404
+

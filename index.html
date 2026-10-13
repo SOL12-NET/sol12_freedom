@@ -22,22 +22,21 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=mars1">
 
   <!-- Self-hosted CSS -->
-  <link rel="stylesheet" href="css/style.css?v=20261012">
+  <link rel="stylesheet" href="css/style.css?v=20261013">
 </head>
 <body>
 
   <!-- Background overlay (pure pitch black space) -->
   <div class="dot-grid-overlay" aria-hidden="true"></div>
 
-  <!-- Minimal Mission Control Navbar with 3D Orbital Mars Logo Simulator -->
+  <!-- Minimal Mission Control Navbar with Shared Miniature Mars Logo -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#" class="nav-brand" aria-label="SOL12 Home">
-        <canvas id="logo-simulator" width="54" height="54" aria-hidden="true"></canvas>
-        <div class="brand-text">
-          <span class="brand-name">SOL12</span>
-          <span class="brand-sub">// SOVEREIGNTY &amp; ENCRYPTION</span>
-        </div>
+      <a href="index.html" class="nav-brand" aria-label="SOL12 Home">
+        <span class="sol12-mars-logo" id="logo-simulator" data-sol12-mars-logo data-texture-src="assets/logo/mars_logo_512x256.jpg?v=20261013" aria-hidden="true">
+          <img src="assets/logo/mars-logo-fallback.png?v=20261013" alt="" width="52" height="52" class="sol12-mars-logo-fallback" decoding="async">
+        </span>
+        <span class="brand-name">SOL<span class="brand-orange">12</span></span>
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
@@ -67,7 +66,6 @@
         
         <!-- Left Column: Text & Statements -->
         <div class="hero-content">
-          <span class="section-tag font-mono">SOL12 // Swiss Tor Relays for Privacy &amp; Free Expression</span>
           <h1 class="hero-title">
             Private by design.<br>
             <span class="hero-title-highlight">Free by principle.</span>
@@ -75,7 +73,7 @@
 
           <div class="hero-text-block">
             <p class="hero-paragraph">
-              Across the European Union, proposals such as client-side scanning of private messages ("Chat Control") and calls for "lawful access" to encrypted data keep putting strong encryption under pressure. SOL12 exists to push back the most concrete way we know: by running infrastructure.
+              Across the European Union, proposals such as client-side scanning of private messages ("Chat Control") and calls for "lawful access" to encrypted data keep putting strong encryption under pressure. SOL<span class="brand-orange">12</span> exists to push back the most concrete way we know: by running infrastructure.
             </p>
 
             <p class="hero-paragraph">
@@ -111,7 +109,7 @@
         
         <div class="section-header">
           <span class="section-tag font-mono">// CORE PRINCIPLES</span>
-          <h2 class="section-title">The SOL12 Manifesto</h2>
+          <h2 class="section-title">The SOL<span class="brand-orange">12</span> Manifesto</h2>
         </div>
 
         <div class="manifesto-grid">
@@ -144,7 +142,7 @@
             <div class="manifesto-num">04</div>
             <h3>Built for the Common Good</h3>
             <p>
-              SOL12 is independent and self-funded. We give our time and resources to strengthen the global Tor network, with no commercial agenda and nothing to sell.
+              SOL<span class="brand-orange">12</span> is independent and self-funded. We give our time and resources to strengthen the global Tor network, with no commercial agenda and nothing to sell.
             </p>
           </div>
 
@@ -163,7 +161,7 @@
   <footer class="footer">
     <div class="container footer-content">
       <div class="footer-left">
-        <span class="footer-brand"><span class="footer-brand-name">SOL12</span> <span class="footer-brand-tag">// SWISS TOR RELAYS</span></span>
+        <span class="footer-brand"><span class="footer-brand-name">SOL<span class="brand-orange">12</span></span> <span class="footer-brand-tag">// SWISS TOR RELAYS</span></span>
         <p class="footer-desc">
           An independent, volunteer-led initiative defending strong encryption, online privacy, and freedom of expression.
         </p>
@@ -186,8 +184,9 @@
   <script src="js/three.min.js"></script>
   <script src="js/GLTFLoader.js"></script>
   <script src="js/mars-globe.js?v=20261012"></script>
-  <script src="js/app.js?v=20261012"></script>
-  <script src="js/relays.js?v=20261012"></script>
+  <script src="js/sol12-mars-logo.js?v=20261013"></script>
+  <script src="js/app.js?v=20261013"></script>
+  <script src="js/relays.js?v=20261013"></script>
 
 </body>
 </html>
