@@ -48,16 +48,20 @@ def main():
             print(f"  [FAIL] Missing Font: {rel}")
             errors += 1
 
-    print("\n--- 3. Checking Assets referenced in mars-globe.js ---")
-    asset_matches = re.findall(r'["\'](assets/[^"\']+)["\']', mars_js)
-    for m in asset_matches:
-        rel = m.replace("/", os.sep)
-        full = os.path.join(root, rel)
-        if os.path.exists(full):
-            print(f"  [OK] 3D Asset: {rel}")
-        else:
-            print(f"  [FAIL] Missing 3D Asset: {rel}")
-            errors += 1
+    print("\n--- 3. Checking Assets referenced in mars-globe.js and sol12-mars-logo.js ---")
+    for js_file in ("mars-globe.js", "sol12-mars-logo.js"):
+        js_path = os.path.join(root, "js", js_file)
+        with open(js_path, "r", encoding="utf-8") as f:
+            js_content = f.read()
+        asset_matches = re.findall(r'["\'](assets/[^"\'\?]+)', js_content)
+        for m in asset_matches:
+            rel = m.replace("/", os.sep)
+            full = os.path.join(root, rel)
+            if os.path.exists(full):
+                print(f"  [OK] 3D/Logo Asset ({js_file}): {rel}")
+            else:
+                print(f"  [FAIL] Missing 3D/Logo Asset ({js_file}): {rel}")
+                errors += 1
 
     print(f"\nCompleted check with {errors} errors.")
     if errors > 0:
