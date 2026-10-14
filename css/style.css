@@ -1221,7 +1221,7 @@ body {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
   .hero-paragraph {
     font-size: 1rem;
   }

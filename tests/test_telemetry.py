@@ -215,7 +215,7 @@ def test_shared_mars_logo_assets_and_fallback_markup(monkeypatch):
             "--sol12-brand-gap",
         ):
             assert var_name in css
-        assert "@media (max-width: 768px)" not in css
+        assert "@media (max-width: 768px)" in css
         for asset in ("/assets/logo/mars_logo_512x256.jpg", "/assets/logo/mars-logo-fallback.png", "/js/sol12-mars-logo.js"):
             assert client.get(asset).status_code == 200
         for internal in ("/docs/mars-logo.md", "/scripts/generate_mars_logo_assets.py"):
