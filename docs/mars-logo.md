@@ -85,15 +85,47 @@ The script performs two deterministic operations:
       decoding="async"
     >
   </span>
-  <span class="brand-name">SOL<span class="brand-orange">12</span></span>
+  <span class="brand-name">SOL<span class="brand-orange">12</span>net</span>
 </a>
 ```
 
 ```css
+:root {
+  --sol12-brand-font-family: "Orbitron", "Inter", system-ui, sans-serif;
+  --sol12-brand-font-weight: 700;
+  --sol12-brand-font-size: 1.25rem;
+  --sol12-brand-tracking: 0.02em;
+  --sol12-brand-line-height: 1.2;
+  --sol12-brand-text-transform: none;
+  --sol12-brand-color: #FFFFFF;
+  --sol12-brand-accent: #F97316;
+  --sol12-brand-orange: #F97316;
+  --sol12-brand-logo-size: 44px;
+  --sol12-brand-gap: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --sol12-brand-font-size: 1.5rem;
+    --sol12-brand-logo-size: 52px;
+  }
+}
+
+.nav-brand,
+.sol12-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sol12-brand-gap);
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--sol12-brand-color);
+  flex-shrink: 0;
+}
+
 .sol12-mars-logo {
   position: relative;
-  width: 52px;
-  height: 52px;
+  width: var(--sol12-brand-logo-size);
+  height: var(--sol12-brand-logo-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -110,11 +142,17 @@ The script performs two deterministic operations:
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
-  .sol12-mars-logo {
-    width: 44px;
-    height: 44px;
-  }
+.brand-name,
+.sol12-brand-title,
+.sol12-brand-name {
+  font-family: var(--sol12-brand-font-family);
+  font-weight: var(--sol12-brand-font-weight);
+  font-size: var(--sol12-brand-font-size);
+  letter-spacing: var(--sol12-brand-tracking);
+  line-height: var(--sol12-brand-line-height);
+  text-transform: var(--sol12-brand-text-transform);
+  color: var(--sol12-brand-color);
+  white-space: nowrap;
 }
 ```
 
