@@ -221,3 +221,13 @@ def test_shared_mars_logo_assets_and_fallback_markup(monkeypatch):
         for internal in ("/docs/mars-logo.md", "/scripts/generate_mars_logo_assets.py"):
             assert client.get(internal).status_code == 404
 
+
+def test_brand_header_breakpoint_alignment_at_768px(monkeypatch):
+    monkeypatch.setattr(Relay, "collect_directory", AsyncMock())
+    with TestClient(app) as client:
+        css = client.get("/css/style.css").text
+        assert "@media (min-width: 769px)" in css
+        assert "@media (min-width: 768px)" not in css
+        assert "--sol12-brand-font-size: 1.25rem;" in css
+        assert "@media (max-width: 768px)" in css
+
