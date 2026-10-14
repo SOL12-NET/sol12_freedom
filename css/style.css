@@ -277,8 +277,8 @@ body {
 .sol12-mars-logo,
 #logo-simulator {
   position: relative;
-  width: var(--sol12-brand-logo-size);
-  height: var(--sol12-brand-logo-size);
+  width: 52px;
+  height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1237,6 +1237,12 @@ body {
     padding: 0 1rem;
   }
 
+  .nav-brand .sol12-mars-logo,
+  .nav-brand #logo-simulator {
+    width: 44px;
+    height: 44px;
+  }
+
   .nav-links {
     gap: 0.35rem;
   }
@@ -1261,6 +1267,12 @@ body {
     padding: 0 0.75rem;
     row-gap: 0.5rem;
     column-gap: 0.5rem;
+  }
+
+  .nav-brand .sol12-mars-logo,
+  .nav-brand #logo-simulator {
+    width: 44px;
+    height: 44px;
   }
 
   .nav-links {
