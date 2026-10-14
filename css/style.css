@@ -30,13 +30,36 @@
   --font-display: "Orbitron", "Inter", system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+  /* Shared SOL12 Brand Header Contract (mobile < 768px, desktop >= 768px) */
+  --sol12-brand-font-family: var(--font-display);
+  --sol12-brand-font-weight: 700;
+  --sol12-brand-font-size: 1.25rem;
+  --sol12-brand-tracking: 0.02em;
+  --sol12-brand-line-height: 1.2;
+  --sol12-brand-text-transform: none;
+  --sol12-brand-color: #FFFFFF;
+  --sol12-brand-accent: #F97316;
+  --sol12-brand-orange: #F97316;
+  --sol12-brand-logo-size: 44px;
+  --sol12-brand-gap: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --sol12-brand-font-size: 1.5rem;
+    --sol12-brand-logo-size: 52px;
+  }
 }
 
 .brand-orange,
+.sol12-brand-accent,
+a:link .brand-orange,
 a:visited .brand-orange,
 a:hover .brand-orange,
+a:active .brand-orange,
 a:focus-visible .brand-orange {
-  color: var(--brand-orange);
+  color: var(--sol12-brand-accent);
 }
 
 /* Base reset */
@@ -240,20 +263,22 @@ body {
   gap: 1.5rem;
 }
 
-.nav-brand {
+.nav-brand,
+.sol12-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: var(--sol12-brand-gap);
   min-height: 44px;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--sol12-brand-color);
+  flex-shrink: 0;
 }
 
 .sol12-mars-logo,
 #logo-simulator {
   position: relative;
-  width: 52px;
-  height: 52px;
+  width: var(--sol12-brand-logo-size);
+  height: var(--sol12-brand-logo-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -270,13 +295,17 @@ body {
   pointer-events: none;
 }
 
-.brand-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  font-size: 1.2rem;
-  color: #ffffff;
-  line-height: 1;
+.brand-name,
+.sol12-brand-title,
+.sol12-brand-name {
+  font-family: var(--sol12-brand-font-family);
+  font-weight: var(--sol12-brand-font-weight);
+  font-size: var(--sol12-brand-font-size);
+  letter-spacing: var(--sol12-brand-tracking);
+  line-height: var(--sol12-brand-line-height);
+  text-transform: var(--sol12-brand-text-transform);
+  color: var(--sol12-brand-color);
+  white-space: nowrap;
 }
 
 .nav-telemetry-status {
@@ -1162,7 +1191,37 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+  .nav-container {
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    gap: 0.35rem;
+  }
+
+  .nav-link {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.65rem;
+  }
+
+  .nav-telemetry-status {
+    gap: 0.5rem;
+  }
+
+  .time-readout {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .telemetry-pill {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.55rem;
+  }
+}
+
+@media (max-width: 767.98px) {
   .hero-paragraph {
     font-size: 1rem;
   }
@@ -1176,16 +1235,6 @@ body {
     row-gap: 0.65rem;
     column-gap: 0.75rem;
     padding: 0 1rem;
-  }
-
-  .nav-brand .sol12-mars-logo,
-  .nav-brand #logo-simulator {
-    width: 44px;
-    height: 44px;
-  }
-
-  .nav-brand .brand-name {
-    font-size: 1.1rem;
   }
 
   .nav-links {
@@ -1205,43 +1254,27 @@ body {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-
-  .time-readout {
-    font-size: 0.72rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .telemetry-pill {
-    font-size: 0.72rem;
-    padding: 0.25rem 0.55rem;
-  }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 520px) {
   .nav-container {
     padding: 0 0.75rem;
     row-gap: 0.5rem;
     column-gap: 0.5rem;
   }
 
-  .nav-brand .sol12-mars-logo,
-  .nav-brand #logo-simulator {
-    width: 44px;
-    height: 44px;
-  }
-
-  .nav-brand .brand-name {
-    font-size: 1.05rem;
-  }
-
   .nav-links {
-    gap: 0.25rem;
+    width: 100%;
+    order: 2;
+    margin-left: 0;
+    justify-content: flex-start;
+    gap: 0.4rem;
   }
 
   .nav-link {
     font-size: 0.78rem;
-    padding: 0.35rem 0.55rem;
-    white-space: normal;
+    padding: 0.35rem 0.65rem;
+    white-space: nowrap;
     text-align: center;
   }
 

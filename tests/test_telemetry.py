@@ -195,11 +195,27 @@ def test_shared_mars_logo_assets_and_fallback_markup(monkeypatch):
         for page in ("/", "/relays.html"):
             html = client.get(page).text
             assert 'class="nav-brand"' in html
+            assert '<span class="brand-name">SOL<span class="brand-orange">12</span>net</span>' in html
             assert "assets/logo/mars-logo-fallback.png" in html
             assert "assets/logo/mars_logo_512x256.jpg" in html
             assert "js/sol12-mars-logo.js" in html
             assert "SOVEREIGNTY &amp; ENCRYPTION" not in html
             assert "Swiss Tor Relays for Privacy &amp; Free Expression" not in html
+        css = client.get("/css/style.css").text
+        for var_name in (
+            "--sol12-brand-font-family",
+            "--sol12-brand-font-weight",
+            "--sol12-brand-font-size",
+            "--sol12-brand-tracking",
+            "--sol12-brand-line-height",
+            "--sol12-brand-text-transform",
+            "--sol12-brand-color",
+            "--sol12-brand-accent",
+            "--sol12-brand-logo-size",
+            "--sol12-brand-gap",
+        ):
+            assert var_name in css
+        assert "@media (max-width: 768px)" not in css
         for asset in ("/assets/logo/mars_logo_512x256.jpg", "/assets/logo/mars-logo-fallback.png", "/js/sol12-mars-logo.js"):
             assert client.get(asset).status_code == 200
         for internal in ("/docs/mars-logo.md", "/scripts/generate_mars_logo_assets.py"):

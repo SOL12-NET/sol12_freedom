@@ -63,6 +63,35 @@ def main():
                 print(f"  [FAIL] Missing 3D/Logo Asset ({js_file}): {rel}")
                 errors += 1
 
+    print("\n--- 4. Checking Shared Brand Header Contract ---")
+    expected_brand_markup = '<span class="brand-name">SOL<span class="brand-orange">12</span>net</span>'
+    for page in ("index.html", "relays.html"):
+        with open(os.path.join(root, page), "r", encoding="utf-8") as f:
+            page_html = f.read()
+        if expected_brand_markup in page_html:
+            print(f"  [OK] Brand header markup in {page}")
+        else:
+            print(f"  [FAIL] Missing or invalid brand header markup in {page}")
+            errors += 1
+
+    for var_name in (
+        "--sol12-brand-font-family",
+        "--sol12-brand-font-weight",
+        "--sol12-brand-font-size",
+        "--sol12-brand-tracking",
+        "--sol12-brand-line-height",
+        "--sol12-brand-text-transform",
+        "--sol12-brand-color",
+        "--sol12-brand-accent",
+        "--sol12-brand-logo-size",
+        "--sol12-brand-gap",
+    ):
+        if var_name not in css:
+            print(f"  [FAIL] Missing CSS variable: {var_name}")
+            errors += 1
+        else:
+            print(f"  [OK] CSS variable: {var_name}")
+
     print(f"\nCompleted check with {errors} errors.")
     if errors > 0:
         sys.exit(1)
