@@ -3,7 +3,7 @@
  * Exact CPU port of sol12-mars-logo.js fragment shader at 32x32 (~10 fps in canvas mode,
  * or pre-rendered same-origin PNG sequence via data-frames-pattern + data-frames-count for strict CSP).
  * Reusable standalone component for sol12-website, Freedom, Tor Monitor, and ifconfig.
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 (function (root, factory) {
   'use strict';
@@ -23,19 +23,21 @@
         return {
           textureSrc: document.currentScript.getAttribute('data-texture-src'),
           framesPattern: document.currentScript.getAttribute('data-frames-pattern'),
-          framesCount: document.currentScript.getAttribute('data-frames-count')
+          framesCount: document.currentScript.getAttribute('data-frames-count'),
+          staticSrc: document.currentScript.getAttribute('data-static-src')
         };
       }
     } catch (_) {}
     return {
       textureSrc: null,
       framesPattern: null,
-      framesCount: null
+      framesCount: null,
+      staticSrc: null
     };
   })();
 
   const DEFAULT_SPEC = Object.freeze({
-    version: '1.1.0',
+    version: '1.2.0',
     textureUrl: 'assets/logo/mars_logo_512x256.jpg?v=20261013',
     sphereRadius: 0.80,
     cameraZ: 3.2075,
@@ -541,6 +543,73 @@
     return link;
   }
 
+  function resolveStaticHref() {
+    if (capturedScriptAttrs.staticSrc) {
+      return capturedScriptAttrs.staticSrc;
+    }
+    if (typeof document === 'undefined') {
+      return null;
+    }
+    try {
+      if (typeof document.querySelector === 'function') {
+        const scriptEl = document.querySelector('script[src*="sol12-mars-favicon"][data-static-src]') ||
+          document.querySelector('script[src*="sol12-mars-favicon"]');
+        if (scriptEl && typeof scriptEl.getAttribute === 'function') {
+          const sAttr = scriptEl.getAttribute('data-static-src');
+          if (sAttr) return sAttr;
+        }
+      }
+      const staticEl = (typeof document.getElementById === 'function' && document.getElementById('sol12-static-favicon')) ||
+        (typeof document.querySelector === 'function' && document.querySelector('#sol12-static-favicon'));
+      if (staticEl && typeof staticEl.getAttribute === 'function') {
+        const staticHref = staticEl.getAttribute('href');
+        if (staticHref) return staticHref;
+      }
+      let links = (typeof document.querySelectorAll === 'function') ? document.querySelectorAll('link') : null;
+      if ((!links || !links.length) && document.head) {
+        if (typeof document.head.querySelectorAll === 'function') {
+          links = document.head.querySelectorAll('link');
+          if (!links || !links.length) {
+            links = document.head.querySelectorAll('link[rel]');
+          }
+        }
+        if ((!links || !links.length) && Array.isArray(document.head.children)) {
+          links = document.head.children;
+        }
+      }
+      if (links) {
+        for (let i = 0; i < links.length; i++) {
+          const l = links[i];
+          if (!l || l.id === 'sol12-animated-favicon' || typeof l.getAttribute !== 'function') continue;
+          const origRel = String(l.getAttribute(SUSPENDED_REL_ATTR) || l.getAttribute('rel') || '').toLowerCase();
+          if (origRel.indexOf('icon') === -1 || origRel.indexOf('apple-touch-icon') !== -1) continue;
+          const typeAttr = String(l.getAttribute('type') || '').toLowerCase();
+          if (typeAttr !== 'image/png') continue;
+          const href = l.getAttribute('href');
+          if (href) return href;
+        }
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function showStaticFrame() {
+    try {
+      stopTimer();
+      const staticHref = resolveStaticHref();
+      if (staticHref) {
+        const link = ensureAnimatedLink();
+        if (link) {
+          link.type = 'image/png';
+          link.href = staticHref;
+        }
+        lastFrameIndex = -1;
+      } else {
+        removeAnimatedLink();
+      }
+    } catch (_) {}
+  }
+
   function ensureRenderCanvas() {
     if (typeof document === 'undefined') return false;
     if (renderCanvas && renderCtx && renderImageData) return true;
@@ -674,13 +743,26 @@
     } else {
       stopTimer();
       const notReady = framesConfig === null && !isTextureLoaded;
-      if (isReducedMotion || !isDocumentVisible || isCspBlocked || notReady || isPaused) {
+      if (!isDocumentVisible && !isReducedMotion && !isCspBlocked && !isDestroyed && isStarted && !isPaused) {
+        showStaticFrame();
+      } else if (isReducedMotion || !isDocumentVisible || isCspBlocked || notReady || isPaused) {
         removeAnimatedLink();
       }
     }
   }
 
   function onVisibilityChange() {
+    if (typeof document === 'undefined') return;
+    isDocumentVisible = !document.hidden;
+    syncLoopState();
+  }
+
+  function onPageHide() {
+    isDocumentVisible = false;
+    syncLoopState();
+  }
+
+  function onPageShow() {
     if (typeof document === 'undefined') return;
     isDocumentVisible = !document.hidden;
     syncLoopState();
@@ -714,6 +796,10 @@
     isDocumentVisible = typeof document.hidden === 'boolean' ? !document.hidden : true;
     document.addEventListener('visibilitychange', onVisibilityChange, false);
     document.addEventListener('securitypolicyviolation', onSecurityPolicyViolation, false);
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      window.addEventListener('pagehide', onPageHide, false);
+      window.addEventListener('pageshow', onPageShow, false);
+    }
 
     if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
       motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -733,6 +819,10 @@
     listenersAttached = false;
     document.removeEventListener('visibilitychange', onVisibilityChange, false);
     document.removeEventListener('securitypolicyviolation', onSecurityPolicyViolation, false);
+    if (typeof window !== 'undefined' && typeof window.removeEventListener === 'function') {
+      window.removeEventListener('pagehide', onPageHide, false);
+      window.removeEventListener('pageshow', onPageShow, false);
+    }
     if (motionQuery) {
       if (typeof motionQuery.removeEventListener === 'function') {
         motionQuery.removeEventListener('change', onMotionChange);
@@ -852,6 +942,8 @@
     stop: stop,
     destroy: destroy,
     isAnimating: isAnimating,
+    showStaticFrame: showStaticFrame,
+    resolveStaticHref: resolveStaticHref,
     frameRotation: frameRotation,
     renderFrameDataUrl: renderFrameDataUrl,
     renderPixels: renderPixels
