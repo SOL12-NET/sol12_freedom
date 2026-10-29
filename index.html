@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=mars1">
 
   <!-- Self-hosted CSS -->
-  <link rel="stylesheet" href="css/style.css?v=20261013">
+  <link rel="stylesheet" href="css/style.css?v=20261029">
 </head>
 <body>
 
@@ -89,11 +89,13 @@
 
         <!-- Right Column: 3D Mars Globe seamlessly blending into black background (no frame, no border) -->
         <div class="hero-mars-column">
-          <div class="hero-image-container" id="mars-canvas-container">
-            <picture id="mars-fallback-image">
-              <source srcset="assets/mars_orbit_view.webp" type="image/webp">
-              <img src="assets/mars_orbit_view.png" alt="Martian orbit with Phobos and Deimos satellites" class="hero-mars-image" width="1024" height="1024">
-            </picture>
+          <div class="hero-image-container" id="mars-canvas-container" data-globe-mode="pending">
+            <noscript>
+              <picture id="mars-fallback-image">
+                <source srcset="assets/mars_orbit_view.webp" type="image/webp">
+                <img src="assets/mars_orbit_view.png" alt="Martian orbit with Phobos and Deimos satellites" class="hero-mars-image" width="1024" height="1024">
+              </picture>
+            </noscript>
           </div>
         </div>
 
@@ -182,7 +184,7 @@
   <!-- 3D Engine & Interactive Logic -->
   <script src="js/three.min.js"></script>
   <script src="js/GLTFLoader.js"></script>
-  <script src="js/mars-globe.js?v=20261012"></script>
+  <script src="js/mars-globe.js?v=20261029"></script>
   <script src="js/sol12-mars-logo.js?v=20261013"></script>
   <script src="js/sol12-mars-favicon.js?v=1.2.0"></script>
   <script src="js/app.js?v=20261013"></script>
