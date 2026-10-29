@@ -74,7 +74,7 @@ def result():
 
 
 def test_constants(result):
-    assert result["fadeMs"] == 1500
+    assert result["fadeMs"] == 4500
     assert result["timeoutMs"] > result["fadeMs"]
     assert 1 <= result["attempts"] <= 3
 
