@@ -6,7 +6,7 @@
  *   - The container is pure black and the canvas is at opacity 0 from the initial CSS.
  *   - Explicit readiness (createRevealMachine): the Mars texture, Phobos and Deimos have all
  *     loaded, the scene has been compiled and rendered once while invisible, then the canvas
- *     fades in (1.5 s ease-in-out, CSS) on a following animation frame, once per scene init.
+ *     fades in (4.5 s ease-in-out, CSS) on a following animation frame, once per scene init.
  *   - prefers-reduced-motion: reduce shows a single static frame, without fade or animation.
  *   - WebGL missing, a required resource failing, a load timeout or a context loss keep the
  *     area black (never a poster or a partial scene), log a "[SOL12 3D]" warning naming the
@@ -18,7 +18,7 @@
   'use strict';
 
   // Reveal fade duration; must match the opacity transition in css/style.css.
-  const REVEAL_FADE_MS = 1500;
+  const REVEAL_FADE_MS = 4500;
   // A scene that is not ready after this delay is treated as failed (never revealed).
   const LOAD_TIMEOUT_MS = 30000;
   // Total scene load attempts (first load + bounded retries) and the delay between them.

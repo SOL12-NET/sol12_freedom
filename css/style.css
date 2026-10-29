@@ -986,10 +986,10 @@ body {
   transition: none;
 }
 
-/* Reveal: 1.5 s ease-in-out, played once when data-globe-mode switches to "webgl". */
+/* Reveal: 4.5 s ease-in-out, played once when data-globe-mode switches to "webgl". */
 .hero-image-container[data-globe-mode="webgl"] #mars-canvas {
   opacity: 1;
-  transition: opacity 1.5s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: opacity 4.5s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
