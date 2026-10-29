@@ -966,7 +966,8 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background: transparent;
+  /* Pure black from the first paint; the 3D scene fades in over it once ready (no poster). */
+  background: #000000;
   border: none;
   box-shadow: none;
 }
@@ -980,6 +981,21 @@ body {
   background: transparent;
   border: none;
   box-shadow: none;
+  /* Hidden until js/mars-globe.js reports a complete, rendered scene. */
+  opacity: 0;
+  transition: none;
+}
+
+/* Reveal: 1.5 s ease-in-out, played once when data-globe-mode switches to "webgl". */
+.hero-image-container[data-globe-mode="webgl"] #mars-canvas {
+  opacity: 1;
+  transition: opacity 1.5s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-container[data-globe-mode="webgl"] #mars-canvas {
+    transition: none;
+  }
 }
 
 .hero-mars-image {
